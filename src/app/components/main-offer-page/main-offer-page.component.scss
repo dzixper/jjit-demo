@@ -1,0 +1,69 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sidenav {
+  width: 300px;
+}
+
+.mat-toolbar {
+  justify-content: center;
+}
+
+.sidenav-buttons {
+  margin: 10px 0;
+  button {
+    display: flex;
+    align-content: space-between;
+    justify-content: space-between;
+    width: 100%;
+    color: #586e7a;
+    .mat-icon{
+      color: #000;
+    }
+    font-weight: 1;
+    span {
+      margin-left: 32px;
+    }
+  }
+  .mat-button {
+    width: 100%;
+    height: 56px;
+    padding: 8px 16px 8px 32px;
+  }
+  div {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+  }
+}
+
+.sidenav-logo {
+  padding: 0 30px;
+}
+
+.logo {
+  margin: 7px 15px 0 0;
+}
+
+.row {
+  display: flex;
+  height: 100%; // TODO => jak tu dam 100% to sie rozwala
+  //max-height: 100%;
+  flex-direction: row;
+}
+
+.column {
+  display: flex;
+  width: 50vw;
+  height: 100%;
+  overflow: hidden;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+.column > * {
+  width: 100%;
+}

@@ -1,0 +1,57 @@
+* {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.logo {
+  margin: 7px 15px 0 0;
+}
+
+.navbar-text {
+  color: #99a1ab;
+  font-weight: 400;
+}
+
+.buttons {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+
+  a:not(.active) {
+    color: #99a1ab;
+    text-decoration: none;
+
+    &:hover {
+      color: deeppink;
+    }
+  }
+
+}
+
+.post-a-job-button {
+  a, button {
+    margin-left: 20px;
+  }
+
+  .mat-stroked-button, .mat-flat-button{
+    font-weight: 400 !important;
+  }
+
+  .grayer {
+    color: #757575;
+  }
+
+  .menu {
+    color: #99a1ab;
+    &:hover {
+      color: deeppink;
+    }
+  }
+
+  .mat-icon {
+    font-size: 24px;
+    text-decoration: none;
+    align-content: center;
+  }
+}
+

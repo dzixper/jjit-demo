@@ -1,0 +1,36 @@
+<div class="dialog">
+  <div class="header">
+    <span>More filters</span>
+    <button mat-mini-fab class="mat-elevation-z0">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class="main-section">
+    <span>Salary expectations?</span>
+    <mat-slider #slider min="0" max="50000" step="1000"></mat-slider>
+
+    <div class="salary-section">
+      <div class="salary">
+        <div matLine>Min. amount</div>
+        <div matLine>{{ slider.value }} PLN</div>
+      </div>
+
+      <div class="line">—</div>
+
+      <div class="salary">
+        <div matLine>Max. amount</div>
+        <div matLine>{{ slider.value }} PLN</div>
+      </div>
+
+    </div>
+    <hr>
+    <p>Seniority</p>
+    <div class="options">
+      <button mat-stroked-button *ngFor="let level of levels">{{level}}</button>
+    </div>
+  </div>
+  <div class="submit-section">
+    <button mat-stroked-button>Clear filters</button>
+    <button mat-flat-button color="accent" type="submit">Show offers</button>
+  </div>
+</div>

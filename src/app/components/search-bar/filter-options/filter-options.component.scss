@@ -1,0 +1,44 @@
+*:not(.mat-button-wrapper) {
+  color: #757575; //do zmiany
+}
+
+.salary-section {
+  display: flex;
+  .salary {
+    font-size: 12px;
+  }
+  .line {
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  span {
+    margin: 0;
+    font-weight: 400;
+    font-size: 18px;
+  }
+}
+
+.main-section {
+  span, p {
+    font-weight: 700;
+  }
+  .options {
+    display: flex;
+    button {
+      width: 20%;
+      margin: 6px;
+    }
+  }
+}
+
+.submit-section {
+  display: flex;
+  justify-content: space-between;
+}

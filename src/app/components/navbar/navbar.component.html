@@ -1,0 +1,23 @@
+<mat-toolbar>
+  <a href="#" class="logo">
+    <img src="assets/logo.png" alt="logo" class="logo">
+  </a>
+  <span class="navbar-text">#2 Unemployed Board for IT industry in Poland</span>
+  <div class="buttons">
+    <a routerLink="" mat-button color="accent" class="active">Offers</a>
+    <a href="#" mat-button color="accent">Brands</a>
+    <a href="#" mat-button color="accent">News</a>
+    <a href="#" mat-button color="accent">Matchmaking</a>
+    <a href="#" mat-button color="accent">Select</a>
+  </div>
+  <div class="post-a-job-button">
+    <a routerLink="post-offer" mat-stroked-button class="grayer">Post a Job</a>
+    <a href="#" mat-flat-button color="accent">
+      Sign in<mat-icon inline>keyboard_arrow_down</mat-icon>
+    </a>
+    <button mat-icon-button color="accent" class="menu" (click)="sidenavToggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+

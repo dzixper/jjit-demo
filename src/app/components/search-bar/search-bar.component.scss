@@ -1,0 +1,75 @@
+$gradient: #f5af19, #f12711, #FC466B, #3F5EFB,
+#c471ed, #f64f59, #6dd5ed, #0f9b0f,
+#FDC830, #F37335, #302b63, #ED213A,
+#264653, #85144b , #4ca2cd, #24243e,
+#c31432, #cc5333, #0049B7, #6B5B95,
+#00b09b, #96c93d, #fca311;
+
+
+.wrapper {
+  display: flex; //TODO => jak daje flex to mat-buttons się powiększają
+  overflow: hidden;
+  flex-wrap: nowrap;
+  height: 59px;
+  padding: 14px 15px 10px;
+  //box-sizing: border-box;
+}
+
+.searchbar-content > * {
+  margin: 0 10px;
+
+  button {
+    margin-top: 7px;
+  }
+}
+
+.searchbar-location-button {
+  margin-right: 10px;
+}
+
+.searchbar-not-search-button {
+  display: flex;
+}
+
+.searchbar-content {
+  width: 100vw;
+  display: flex;
+  overflow: hidden;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.technologies {
+  display: flex;
+  align-content: center;
+}
+
+.technology {
+  font-size: 8pt;
+  display: flex;
+  flex-flow: column wrap;
+  margin: 0 6px;
+  align-content: center;
+  justify-content: space-between;
+  text-align: center;
+  color: #757575;
+  @for $i from 0 through 22 {
+    #button#{$i} {
+      background: linear-gradient(to right, nth($gradient, $i+1), lighten(nth($gradient, $i+1), 10%));
+      &:hover {
+        box-shadow: rgb(228, 232, 240) 0 0 0 5px;
+      }
+    }
+  }
+
+
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+

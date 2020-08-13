@@ -1,0 +1,70 @@
+<div class="root">
+  <mat-sidenav-container>
+    <mat-sidenav #sidenavigation mode="over" position="end" class="sidenav">
+      <div class="sidenav-logo">
+        <mat-toolbar>
+          <div class="logo">
+            <img src="assets/logo.png" alt="logo" class="logo">
+          </div>
+        </mat-toolbar>
+      </div>
+      <div class="sidenav-buttons">
+        <button mat-button color="accent">
+          <mat-icon>work</mat-icon>
+          <span>Employer Panel</span>
+        </button>
+        <button mat-button color="accent">
+          <mat-icon>portrait</mat-icon>
+          <span>JustJoinIT</span>
+        </button>
+        <button mat-button color="accent">
+          <mat-icon>people</mat-icon>
+          <span>About Us</span>
+        </button>
+        <button mat-button color="accent">
+          <mat-icon>mic</mat-icon>
+          <span>Event</span>
+        </button>
+        <button mat-button color="accent">
+          <mat-icon>fiber_manual_record</mat-icon>
+          <span>Recruitment</span>
+        </button>
+        <button mat-button color="accent">
+          <mat-icon>bar_chart</mat-icon>
+          <span>IT Index</span>
+        </button>
+        <button mat-button color="accent">
+          <mat-icon>rss_feed</mat-icon>
+          <span>RSS</span>
+        </button>
+        <button mat-button color="accent">
+          <mat-icon>picture_as_pdf</mat-icon>
+          <span>Terms</span>
+        </button>
+        <button mat-button color="accent">
+          <mat-icon>picture_as_pdf</mat-icon>
+          <span>Policy</span>
+        </button>
+        <div>
+          <a mat-icon-button>
+            <mat-icon>wb_sunny</mat-icon>
+          </a>
+          <mat-slide-toggle></mat-slide-toggle>
+          <a mat-icon-button>
+            <mat-icon>brightness_3</mat-icon>
+          </a>
+        </div>
+      </div>
+    </mat-sidenav>
+
+
+
+<!--    CONTENT -->
+    <mat-sidenav-content>
+      <app-navbar></app-navbar>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+</div>
+

@@ -1,0 +1,118 @@
+<div class="offers">
+  <mat-tab-group color="warn">
+    <div class="flex">
+      <div class="left-side">
+        <mat-tab label="offers with salary">
+          <div *ngFor="let offer of offers; let i = index">
+            <a
+              href="#"
+              class="mat-card"
+              *ngIf="offer.salary[2] !== '0'"
+              id="offer-card-salary{{ i }}"
+            >
+              <div class="content">
+                <div class="image-container">
+                  <img src="assets/logo.png" alt="logo" class="image" />
+                </div>
+                <div class="info">
+                  <div class="head">
+                    <span class="position">{{ offer.position }}</span>
+                    <span class="salary">
+                      {{ (offer?.salary)[0] }}
+                      <span class="line">-</span>
+                      {{ (offer?.salary)[1] }}
+                      {{ (offer?.salary)[2] }}
+
+                      <span class="date"
+                        >{{
+                          (
+                            setNewDate(
+                              today.getTime() - offer.timePosted.getTime()
+                            ) /
+                            (1000 * 3600 * 24)
+                          ).toFixed(0)
+                        }}d ago</span
+                      >
+                    </span>
+                  </div>
+                  <div class="body">
+                    <div class="first">
+                      <div class="company">
+                        <mat-icon>business</mat-icon>
+                        {{ offer.company }}
+                      </div>
+                      <div class="location">
+                        <mat-icon>location_on</mat-icon>
+                        {{ offer.location }}
+                      </div>
+                    </div>
+                    <div class="tags">
+                      <div *ngFor="let tag of offer.tags" class="tag">
+                        {{ tag }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </mat-tab>
+        <mat-tab label="all offers">
+          <div *ngFor="let offer of offers; let i = index">
+            <mat-card id="offer-card{{ i }}">
+              <div class="content">
+                <div class="image-container">
+                  <img src="assets/logo.png" alt="logo" class="image" />
+                </div>
+                <div class="info">
+                  <div class="head">
+                    <span class="position">{{ offer.position }}</span>
+                    <span class="salary">
+                      {{ (offer?.salary)[0] }}
+                      <span class="line">-</span>
+                      {{ (offer?.salary)[1] }}
+                      {{ (offer?.salary)[2] }}
+                    </span>
+                  </div>
+                  <div class="body">
+                    <div class="first">
+                      <div class="company">
+                        <mat-icon>business</mat-icon>
+                        {{ offer.company }}
+                      </div>
+                      <div class="location">
+                        <mat-icon>location_on</mat-icon>
+                        {{ offer.location }}
+                      </div>
+                    </div>
+                    <div class="tags">
+                      <div *ngFor="let tag of offer.tags" class="tag">
+                        {{ tag }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mat-card>
+          </div>
+        </mat-tab>
+      </div>
+      <div class="right-side">
+        <mat-tab disabled>
+          <ng-template mat-tab-label>
+            Sort by:
+            <mat-form-field appearance="standard" color="accent">
+              <mat-select [value]="'latest'" (valueChange)="sortit($event)">
+                <mat-option
+                  *ngFor="let sortOption of sortOptions"
+                  [value]="sortOption"
+                  >{{ sortOption }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </ng-template>
+        </mat-tab>
+      </div>
+    </div>
+  </mat-tab-group>
+</div>
