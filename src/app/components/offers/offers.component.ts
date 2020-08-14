@@ -15,39 +15,47 @@ export class OffersComponent implements OnInit {
   constructor(private offersService: OffersService) {}
 
   ngOnInit(): void {
-    this.offers = this.offersService.getOffers(); // TODO => tu jest lipa
-    this.offersService.addOffer('Mati', 'Genius', 'Tczew', false, ['ez', 'fajnie jest', 'gbs'], new Date('04 April 2019'), [300, 600, 'PLN']);
-    this.sortit('latest');
+    this.offers = this.offersService.getOffers();
+    this.offersService.addOffer(
+      'Mati',
+      'Genius',
+      'Tczew',
+      false,
+      ['ez', 'fajnie jest', 'gbs'],
+      new Date('04 April 2019'),
+      [300, 600, 'PLN']
+    );
+    this.sortit('latest', this.offers);
   }
 
   setNewDate(date: number): Date {
     return new Date(date);
   }
 
-  sortit(prop: string): void {
-    // TODO => tutaj lipa bo inaczej nie działa
-    this.offers.forEach((value) => {
-      if (!('salary' in value)) {
-        value.salary = [0, 0, '0'];
-      }
-    });
-
-    // filter
-
-    this.offers.sort((a, b) => {
-      if (!('salary' in a)) {
-        return -1;
-      }
+  sortit(prop: string, offers: any): void {
+    offers.sort((a, b) => {
       switch (prop) {
         case 'latest':
-          return a.timePosted > b.timePosted ? 1 : -1;
+          return a.timePosted < b.timePosted ? 1 : -1;
         case 'lowest salary':
+          if (!('salary' in a)) {
+            return 1;
+          }
+          if (!('salary' in b)) {
+            return -1;
+          }
           return a.salary[0] > b.salary[0]
             ? 1
             : a.salary[0] === b.salary[0]
             ? 0
             : -1;
         case 'highest salary':
+          if (!('salary' in a)) {
+            return 1;
+          }
+          if (!('salary' in b)) {
+            return -1;
+          }
           return a.salary[0] > b.salary[0]
             ? -1
             : a.salary[0] === b.salary[0]

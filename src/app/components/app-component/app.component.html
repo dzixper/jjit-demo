@@ -9,41 +9,9 @@
         </mat-toolbar>
       </div>
       <div class="sidenav-buttons">
-        <button mat-button color="accent">
-          <mat-icon>work</mat-icon>
-          <span>Employer Panel</span>
-        </button>
-        <button mat-button color="accent">
-          <mat-icon>portrait</mat-icon>
-          <span>JustJoinIT</span>
-        </button>
-        <button mat-button color="accent">
-          <mat-icon>people</mat-icon>
-          <span>About Us</span>
-        </button>
-        <button mat-button color="accent">
-          <mat-icon>mic</mat-icon>
-          <span>Event</span>
-        </button>
-        <button mat-button color="accent">
-          <mat-icon>fiber_manual_record</mat-icon>
-          <span>Recruitment</span>
-        </button>
-        <button mat-button color="accent">
-          <mat-icon>bar_chart</mat-icon>
-          <span>IT Index</span>
-        </button>
-        <button mat-button color="accent">
-          <mat-icon>rss_feed</mat-icon>
-          <span>RSS</span>
-        </button>
-        <button mat-button color="accent">
-          <mat-icon>picture_as_pdf</mat-icon>
-          <span>Terms</span>
-        </button>
-        <button mat-button color="accent">
-          <mat-icon>picture_as_pdf</mat-icon>
-          <span>Policy</span>
+        <button mat-button color="accent" *ngFor="let button of sidenavButtons">
+          <mat-icon>{{ button.icon }}</mat-icon>
+          <span>{{ button.text }}</span>
         </button>
         <div>
           <a mat-icon-button>

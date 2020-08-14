@@ -1,8 +1,8 @@
 <!--<div class="offers.ts">-->
 <!--  <div class="selection-bar">-->
 <!--    <div class="left">-->
-<!--      <a href="#" class="link">offers.ts with salary</a>-->
-<!--      <a href="#" class="link">all offers.ts</a>-->
+<!--      <a href="#" class="link">offers with salary</a>-->
+<!--      <a href="#" class="link">all offers</a>-->
 <!--    </div>-->
 <!--    <div class="right">-->
 <!--      Sort by: <button class="sort"></button>-->
@@ -22,7 +22,7 @@
             <a
               href="#"
               class="mat-card"
-              *ngIf="offer.salary[2] !== '0'"
+              *ngIf="offer?.salary"
               id="offer-card-salary{{ i }}"
             >
               <div class="content">
@@ -81,11 +81,32 @@
                 <div class="info">
                   <div class="head">
                     <span class="position">{{ offer.position }}</span>
-                    <span class="salary">
+                    <span class="salary" *ngIf="offer?.salary">
                       {{ (offer?.salary)[0] }}
                       <span class="line">-</span>
                       {{ (offer?.salary)[1] }}
                       {{ (offer?.salary)[2] }}
+                      <span class="date">{{
+                        (
+                          setNewDate(
+                            today.getTime() - offer.timePosted.getTime()
+                          ) /
+                          (1000 * 3600 * 24)
+                        ).toFixed(0)
+                        }}d ago</span
+                      >
+                    </span>
+                    <span class="salary" *ngIf="!(offer?.salary)">
+                      Undisclosed Salary
+                      <span class="date">{{
+                        (
+                          setNewDate(
+                            today.getTime() - offer.timePosted.getTime()
+                          ) /
+                          (1000 * 3600 * 24)
+                        ).toFixed(0)
+                        }}d ago</span
+                      >
                     </span>
                   </div>
                   <div class="body">
@@ -116,7 +137,7 @@
           <ng-template mat-tab-label>
             Sort by:
             <mat-form-field appearance="standard" color="accent">
-              <mat-select [value]="'latest'" (valueChange)="sortit($event)">
+              <mat-select [value]="'latest'" (valueChange)="sortit($event, offers)">
                 <mat-option
                   *ngFor="let sortOption of sortOptions"
                   [value]="sortOption"
