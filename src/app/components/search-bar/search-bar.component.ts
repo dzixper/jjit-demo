@@ -3,8 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { FilterOptionsComponent } from './filter-options/filter-options.component';
 import { TECHNOLOGIES } from '../../shared/technologies';
 import { LOCATIONS } from '../../shared/locations';
-import { Technology } from '../../shared/models/technologies.model';
-import { Location } from '../../shared/models/locations.model';
+import { Technology } from '../../shared/models/technology.model';
+import { Location } from '../../shared/models/location.model';
 
 
 @Component({
@@ -24,9 +24,10 @@ export class SearchBarComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(FilterOptionsComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    // TODO => to do backendu bedzie przydatne
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log(`Dialog result: ${result}`);
+    // });
   }
 
   ngOnInit(): void {

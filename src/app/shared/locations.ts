@@ -1,4 +1,4 @@
-import { Location } from './models/locations.model';
+import { Location } from './models/location.model';
 
 export const LOCATIONS: Array<Location> = [
   {name: 'Warszawa', top: true},

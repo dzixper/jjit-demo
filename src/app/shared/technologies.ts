@@ -1,4 +1,4 @@
-import { Technology } from './models/technologies.model';
+import { Technology } from './models/technology.model';
 
 export const TECHNOLOGIES: Array<Technology> = [
   {name: 'All', icon: 'all'},
