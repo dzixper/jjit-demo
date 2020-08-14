@@ -1,5 +1,8 @@
 @import "~@angular/material/theming";
-
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=latin-ext');
+@import url('https://cdn.maptiler.com/mapbox-gl-js/v1.5.1/mapbox-gl.css');
 @include mat-core();
 
 @mixin grey-mat-button {
@@ -184,8 +187,7 @@ body {
     margin: 6px 12px;
     @include mat-elevation(6, #000, 0.1);
     border-left: 5px solid black;
-    padding: 10px;
-    padding-left: 0;
+    padding: 10px 0 10px 10px;
     &:hover {
       @include mat-elevation(6, #000, 0.4);
     }
@@ -202,6 +204,20 @@ body {
 .dialog {
   .mat-slider-horizontal {
     width: 100%;
+  }
+  .salary {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1 1 0;
+    height: 48px;
+    padding: 2px 24px 0;
+    border-radius: 24px;
+    border: 1px solid rgb(228, 232, 240);
+  }
+  > div {
+    padding: 16px 24px;
+    border-bottom: #e5eaf3 1px solid;
   }
 }
 
