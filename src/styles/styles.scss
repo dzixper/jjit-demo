@@ -5,15 +5,6 @@
 @import url('https://cdn.maptiler.com/mapbox-gl-js/v1.5.1/mapbox-gl.css');
 @include mat-core();
 
-@mixin grey-mat-button {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: #757575;
-  font-weight: 600;
-}
-
 * {
   font-family: Open Sans, sans-serif;
 }
@@ -37,6 +28,14 @@ body {
   padding: 0;
 }
 
+.logo {
+  width: 150px;
+}
+
+.mat-form-field-underline {
+  display: none !important;
+}
+
 .mat-dialog-container {
   width: 600px !important;
   padding: 0 !important;
@@ -49,11 +48,6 @@ body {
 .mat-drawer-content {
   background-color: white;
 }
-
-.mat-drawer-content {
-  //height: 100vh !important;
-}
-
 .mat-toolbar {
   border-bottom: #e5eaf3 1px solid;
   background-color: #fff;
@@ -61,9 +55,7 @@ body {
   height: 68px;
 }
 
-.logo {
-  width: 150px;
-}
+
 
 .mat-stroked-button,
 .mat-button,
@@ -76,6 +68,8 @@ body {
   width: 35px !important;
 }
 
+// jak to wrzucam gdzie indziej to nie działa
+// searchbar-location-button
 .mat-menu-panel {
   position: relative;
   padding: 24px;
@@ -97,129 +91,7 @@ body {
     font-family: Open Sans, sans-serif !important;
   }
 }
-
-.searchbar-content {
-  .mat-flat-button,
-  .mat-stroked-button {
-    width: 150px !important;
-    display: flex;
-    align-content: flex-start;
-    padding-right: 10px !important;
-  }
-
-  .searchbar-search-button {
-    .mat-button-wrapper {
-      font-weight: 0;
-      color: #99a1ab;
-    }
-
-    .mat-flat-button {
-      background-color: #f3f6f8;
-      color: #757575;
-    }
-  }
-
-  .searchbar-location-button,
-  .searchbar-filter-button {
-    button {
-      background-color: white;
-    }
-
-    .mat-button-wrapper {
-      @include grey-mat-button;
-    }
-  }
-}
-
-.mat-form-field-underline {
-  display: none !important;
-}
-
-.offers {
-  .mat-card {
-    display: flex;
-    flex-direction: row;
-  }
-  .mat-ink-bar {
-    visibility: hidden !important;
-  }
-  .mat-tab-body-wrapper {
-    background-color: #f3f6f8;
-    overflow-y: scroll !important;
-    height: 100%; //TODO
-  }
-  .mat-form-field {
-    width: 70px !important;
-  }
-
-  .mat-tab-labels {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .mat-tab-label {
-    border-radius: 20px 20px 0 0;
-    &:hover,
-    &:active {
-      background: #e5eaf3;
-    }
-    &::before,
-    &::after {
-      content: ' ';
-      background: rgba(0, 0, 0, 0)
-        radial-gradient(
-          circle at left top,
-          transparent 70%,
-          rgb(243, 246, 248) 69%
-        )
-        repeat scroll 0 0;
-    }
-  }
-
-  .mat-tab-body-content {
-    display: flex;
-    flex-direction: column;
-    overflow-y: scroll;
-    flex: 1;
-  }
-
-  .mat-card {
-    margin: 6px 12px;
-    @include mat-elevation(6, #000, 0.1);
-    border-left: 5px solid black;
-    padding: 10px 0 10px 10px;
-    &:hover {
-      @include mat-elevation(6, #000, 0.4);
-    }
-  }
-}
-
-@for $i from 0 through 1000 {
-  #offer-card#{$i},
-  #offer-card-salary#{$i} {
-    border-left-color: hsl(random(360), 90, 60) !important;
-  }
-}
-
-.dialog {
-  .mat-slider-horizontal {
-    width: 100%;
-  }
-  .salary {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex: 1 1 0;
-    height: 48px;
-    padding: 2px 24px 0;
-    border-radius: 24px;
-    border: 1px solid rgb(228, 232, 240);
-  }
-  > div {
-    padding: 16px 24px;
-    border-bottom: #e5eaf3 1px solid;
-  }
-}
+// searchbar-location-button
 
 .mapboxgl-marker {
   background-color: hsla(83, 100, 50, 0.8);

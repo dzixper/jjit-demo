@@ -16,6 +16,7 @@ export class OffersComponent implements OnInit {
 
   ngOnInit(): void {
     this.offers = this.offersService.getOffers(); // TODO => tu jest lipa
+    this.offersService.addOffer('Mati', 'Genius', 'Tczew', false, ['ez', 'fajnie jest', 'gbs'], new Date('04 April 2019'), [300, 600, 'PLN']);
     this.sortit('latest');
   }
 

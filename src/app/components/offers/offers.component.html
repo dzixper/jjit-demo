@@ -1,8 +1,8 @@
-<!--<div class="offers">-->
+<!--<div class="offers.ts">-->
 <!--  <div class="selection-bar">-->
 <!--    <div class="left">-->
-<!--      <a href="#" class="link">offers with salary</a>-->
-<!--      <a href="#" class="link">all offers</a>-->
+<!--      <a href="#" class="link">offers.ts with salary</a>-->
+<!--      <a href="#" class="link">all offers.ts</a>-->
 <!--    </div>-->
 <!--    <div class="right">-->
 <!--      Sort by: <button class="sort"></button>-->
@@ -38,8 +38,7 @@
                       {{ (offer?.salary)[1] }}
                       {{ (offer?.salary)[2] }}
 
-                      <span class="date"
-                        >{{
+                      <span class="date">{{
                           (
                             setNewDate(
                               today.getTime() - offer.timePosted.getTime()

@@ -1,0 +1,68 @@
+@import "~@angular/material/theming";
+@include mat-core();
+
+.offers {
+  .mat-card {
+    display: flex;
+    flex-direction: row;
+  }
+  .mat-ink-bar {
+    visibility: hidden !important;
+  }
+  .mat-tab-body-wrapper {
+    background-color: #f3f6f8;
+    overflow-y: scroll !important;
+    height: 100%; //TODO
+  }
+  .mat-form-field {
+    width: 70px !important;
+  }
+
+  .mat-tab-labels {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .mat-tab-label {
+    border-radius: 20px 20px 0 0;
+    &:hover,
+    &:active {
+      background: #e5eaf3;
+    }
+    &::before,
+    &::after {
+      content: ' ';
+      background: rgba(0, 0, 0, 0)
+      radial-gradient(
+          circle at left top,
+          transparent 70%,
+          rgb(243, 246, 248) 69%
+      )
+      repeat scroll 0 0;
+    }
+  }
+
+  .mat-tab-body-content {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    flex: 1;
+  }
+
+  .mat-card {
+    margin: 6px 12px;
+    @include mat-elevation(6, #000, 0.1);
+    border-left: 5px solid black;
+    padding: 10px 0 10px 10px;
+    &:hover {
+      @include mat-elevation(6, #000, 0.4);
+    }
+  }
+}
+
+@for $i from 0 through 1000 {
+  #offer-card#{$i},
+  #offer-card-salary#{$i} {
+    border-left-color: hsl(random(360), 90, 60) !important;
+  }
+}
