@@ -1,96 +1,113 @@
-.info {
+.offers {
   display: flex;
-  width: 100%;
   flex-direction: column;
-  flex: 1 1 0;
 }
 
-.head, .body {
+.selection-bar {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  align-content: space-between;
 }
 
-.body {
-  align-items: flex-end;
-  height: 25px;
-  font-size: 11px;
-  color: rgb(153, 161, 171);
-  .mat-icon {
-    font-size: 13px;
-    width: 13px;
-    height: 13px;
-  }
-  .first {
-    display: flex;
-    flex-direction: row;
-  }
-  .tag {
-    height: 22px;
-    padding: 0 7px;
-    font-size: 11px;
-    line-height: 20px;
-    white-space: nowrap;
-    border-radius: 11px;
-    background-color: rgb(255, 255, 255);
-    color: rgb(153, 161, 171);
-    border: 1px solid rgb(224, 224, 224);
-    display: inline-block;
-    margin-left: 6px;
-    text-transform: lowercase;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    min-width: 1ch;
-  }
+.selection-content {
+  background: rgb(243, 246, 248);
 }
 
-.head {
-  .date {
-    height: 22px;
-    padding: 0 7px;
-    font-size: 11px;
-    line-height: 20px;
-    white-space: nowrap;
-    border-radius: 11px;
-    background-color: rgb(255, 255, 255);
-    color: black;
-    border: 1px solid rgb(224, 224, 224);
-    display: inline-block;
-    margin-left: 6px;
-    text-transform: lowercase;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    min-width: 1ch;
-  }
-}
 
-.content {
-  display: flex;
-  width: 100%;
-}
 
-.image {
-  max-width: 85px;
-  max-height: 40px;
-}
+//.left-side, .right-side {
+//  content: " ";
+//}
 
-.image-container {
-  display: flex;
-  flex-basis: 125px;
-  justify-content: center;
-  align-items: center;
-}
+//.info {
+//  display: flex;
+//  width: 100%;
+//  flex-direction: column;
+//  flex: 1 1 0;
+//}
 
-.position {
-  font-weight: 600;
-}
+//.head, .body {
+//  display: flex;
+//  justify-content: space-between;
+//  align-content: space-between;
+//}
 
-.salary {
-  color: rgb(30, 198, 108);
-  font-size: 16px;
-  font-weight: 300;
-}
-
-.left-side, .right-side {
-  content: " ";
-}
+//.body {
+//  align-items: flex-end;
+//  height: 25px;
+//  font-size: 11px;
+//  color: rgb(153, 161, 171);
+//  .mat-icon {
+//    font-size: 13px;
+//    width: 13px;
+//    height: 13px;
+//  }
+//  .first {
+//    display: flex;
+//    flex-direction: row;
+//  }
+//  .tag {
+//    height: 22px;
+//    padding: 0 7px;
+//    font-size: 11px;
+//    line-height: 20px;
+//    white-space: nowrap;
+//    border-radius: 11px;
+//    background-color: rgb(255, 255, 255);
+//    color: rgb(153, 161, 171);
+//    border: 1px solid rgb(224, 224, 224);
+//    display: inline-block;
+//    margin-left: 6px;
+//    text-transform: lowercase;
+//    text-overflow: ellipsis;
+//    overflow: hidden;
+//    min-width: 1ch;
+//  }
+//}
+//
+//.head {
+//  .date {
+//    height: 22px;
+//    padding: 0 7px;
+//    font-size: 11px;
+//    line-height: 20px;
+//    white-space: nowrap;
+//    border-radius: 11px;
+//    background-color: rgb(255, 255, 255);
+//    color: black;
+//    border: 1px solid rgb(224, 224, 224);
+//    display: inline-block;
+//    margin-left: 6px;
+//    text-transform: lowercase;
+//    text-overflow: ellipsis;
+//    overflow: hidden;
+//    min-width: 1ch;
+//  }
+//}
+//
+//.content {
+//  display: flex;
+//  width: 100%;
+//}
+//
+//.image {
+//  max-width: 85px;
+//  max-height: 40px;
+//}
+//
+//.image-container {
+//  display: flex;
+//  flex-basis: 125px;
+//  justify-content: center;
+//  align-items: center;
+//}
+//
+//.position {
+//  font-weight: 600;
+//}
+//
+//.salary {
+//  color: rgb(30, 198, 108);
+//  font-size: 16px;
+//  font-weight: 300;
+//}

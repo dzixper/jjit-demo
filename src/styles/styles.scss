@@ -5,6 +5,12 @@
 @import url('https://cdn.maptiler.com/mapbox-gl-js/v1.5.1/mapbox-gl.css');
 @include mat-core();
 
+
+
+app-main-offer-page {
+  height: 100%;
+}
+
 * {
   font-family: Open Sans, sans-serif;
 }
@@ -47,7 +53,15 @@ body {
 
 .mat-drawer-content {
   background-color: white;
+  display:flex !important;
+  flex-direction: column !important;
+  height:100%;
 }
+
+.mat-drawer-container {
+  height: 100%;
+}
+
 .mat-toolbar {
   border-bottom: #e5eaf3 1px solid;
   background-color: #fff;
@@ -91,13 +105,13 @@ body {
     font-family: Open Sans, sans-serif !important;
   }
 }
-// searchbar-location-button
+// ^^ searchbar-location-button
 
 .mapboxgl-marker {
-  background-color: hsla(83, 100, 50, 0.8);
-  background-size: cover;
-  width: 25px;
-  height: 25px;
+  background-color: hsla(20, 100, 50, 0.9);
+  box-shadow: rgba(255, 85, 0, 0.25) 0 0 0 5px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   cursor: pointer;
 }
