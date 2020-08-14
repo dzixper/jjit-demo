@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OffersService } from '../../services/offers.service';
-import { Offer } from '../../shared/offer.model';
+import { Offer } from '../../shared/models/offer.model';
 
 @Component({
   selector: 'app-offers',
@@ -32,7 +32,7 @@ export class OffersComponent implements OnInit {
     return new Date(date);
   }
 
-  sortit(prop: string, offers: any): void {
+  sortit(prop: string, offers: Array<Offer>): void {
     offers.sort((a, b) => {
       switch (prop) {
         case 'latest':

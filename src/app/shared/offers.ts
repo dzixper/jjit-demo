@@ -1,4 +1,4 @@
-import { Offer } from './offer.model';
+import { Offer } from './models/offer.model';
 
 export const OFFERS: Array<Offer> = [
   {
