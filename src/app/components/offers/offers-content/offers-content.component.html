@@ -1,0 +1,42 @@
+<a *ngFor="let offer of offers; let i = index" href="#" class="mat-card" id="offer-card-salary{{ i }}">
+  <div class="content">
+    <div class="image-container">
+      <img src="assets/logo.png" alt="logo" class="image"/>
+    </div>
+    <div class="info">
+      <div class="head">
+        <span class="position">{{ offer.position }}</span>
+        <span class="rightside">
+          <span class="salary">
+            {{ offer?.salary ? salaryStyling(offer.salary) : 'Undisclosed Salary'}}
+<!--            {{ thousandSeparator(offer.salary[0]) }}-->
+<!--            {{ offer?.salary ? offer.salary : 'dua lipa'}}-->
+<!--            <span class="line">-</span>-->
+<!--            {{ thousandSeparator(offer.salary[1]) }}-->
+<!--            {{ (offer.salary)[2] }}-->
+          </span>
+          <span class="date">
+            {{(setNewDate(today.getTime() - offer.timePosted.getTime()) /(1000 * 3600 * 24)).toFixed(0)}}d ago
+          </span>
+        </span>
+      </div>
+      <div class="body">
+        <div class="first">
+          <div class="company">
+            <mat-icon>business</mat-icon>
+            {{ offer.company }}
+          </div>
+          <div class="location">
+            <mat-icon>location_on</mat-icon>
+            {{ offer.location }}
+          </div>
+        </div>
+        <div class="tags">
+          <div *ngFor="let tag of offer.tags" class="tag">
+            {{ tag }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</a>

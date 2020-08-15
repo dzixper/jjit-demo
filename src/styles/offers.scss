@@ -55,6 +55,7 @@
     border-left: 5px solid black;
     padding: 10px 0 10px 10px;
     &:hover {
+
       @include mat-elevation(6, #000, 0.4);
     }
   }
@@ -63,6 +64,7 @@
 @for $i from 0 through 1000 {
   #offer-card#{$i},
   #offer-card-salary#{$i} {
-    border-left-color: hsl(random(360), 90, 60) !important;
+    border-left-color: hsl(random(360), 80, 70) !important;
+    border-radius: 5px 0 0 5px;
   }
 }

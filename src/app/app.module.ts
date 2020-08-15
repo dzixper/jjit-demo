@@ -12,10 +12,11 @@ import { FilterOptionsComponent } from './components/search-bar/filter-options/f
 import { RouterModule,  Routes } from '@angular/router';
 import { PostOfferComponent } from './components/post-offer/post-offer.component';
 import { MainOfferPageComponent } from './components/main-offer-page/main-offer-page.component';
+import { OffersContentComponent } from './components/offers/offers-content/offers-content.component';
 
 const appRoutes: Routes = [
   { path: '', component: MainOfferPageComponent },
-  { path: 'post-offer', component: PostOfferComponent }
+  { path: 'post-offer', component: PostOfferComponent },
   ];
 
 @NgModule({
@@ -28,6 +29,7 @@ const appRoutes: Routes = [
     FilterOptionsComponent,
     PostOfferComponent,
     MainOfferPageComponent,
+    OffersContentComponent,
   ],
   imports: [
     BrowserModule,

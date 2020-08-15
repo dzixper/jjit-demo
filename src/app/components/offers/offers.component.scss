@@ -12,8 +12,11 @@
 }
 
 .selection-content {
+  display: flex;
+  flex-direction: column;
   background: rgb(243, 246, 248);
   height: 100%;
+  overflow-y: scroll;
 }
 
 .right, .left {
@@ -37,6 +40,7 @@
   .link {
     &:hover {
       filter: contrast(90%);
+      z-index: 999;
     }
     position: relative;
     display: flex;

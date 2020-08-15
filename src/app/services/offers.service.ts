@@ -26,8 +26,14 @@ export class OffersService {
     });
   }
 
-  getOffers(): Array<Offer> {
-    return OFFERS;
+  getOffers(param: string): Array<Offer> {
+    switch (param) {
+      case 'all':
+        return OFFERS;
+      case 'salary':
+        return OFFERS.filter((offer) => ('salary' in offer));
+    }
+
   }
 
   constructor() {}
