@@ -39,3 +39,16 @@
   display: flex;
   justify-content: space-between;
 }
+
+.mat-flat-button {
+  color: #fff;
+}
+
+.mat-mini-fab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  background: #fff;
+  border: 1px solid rgba(0,0,0, 0.2);
+}

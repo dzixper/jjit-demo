@@ -72,6 +72,20 @@ $gradient: #f5af19, #f12711, #FC466B, #3F5EFB,
   justify-content: space-between;
 }
 
+.mat-menu-panel {
+  content: "";
+  max-width: 1;
+  width: 500px;
+}
+
+.exit-dialog.mat-mini-fab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  background: #fff;
+  border: 1px solid rgba(0,0,0, 0.2);
+}
 
 
 
