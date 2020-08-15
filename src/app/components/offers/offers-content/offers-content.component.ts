@@ -1,21 +1,57 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { Offer } from '../../../shared/models/offer.model';
 import { OffersService } from '../../../services/offers.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-offers-content',
   templateUrl: './offers-content.component.html',
   styleUrls: ['./offers-content.component.scss'],
 })
-export class OffersContentComponent implements OnChanges {
+export class OffersContentComponent implements OnChanges, OnInit, OnDestroy {
   today = new Date();
   offers: Array<Offer> = this.offersService.getOffers('all');
   @Input() selectedOption: string;
+  subscriptionHandler: any;
 
-  constructor(private offersService: OffersService) {}
+  constructor(
+    private offersService: OffersService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    this.subscriptionHandler = this.router.events.subscribe(() => {
+      if (this.route.snapshot.queryParams['tab'] === 'with-salary') {
+        this.offers = this.offersService.getOffers('with-salary');
+      } else {
+        this.offers = this.offersService.getOffers('all');
+      }
+    });
+    // this.offersService.addOffer(
+    //   'mati',
+    //   'mati',
+    //   'Chwaszczyno',
+    //   false,
+    //   ['masno ni'],
+    //   new Date('08 15 2020 18:50'),
+    //   [300, 600, 'EUR']
+    // );
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptionHandler.unsubscribe();
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.offersService.addOffer('mati', 'mati', 'Chwaszczyno', false, ['masno ni'], new Date('08 15 2020 18:50'));
     this.sortit(changes.selectedOption.currentValue, this.offers);
   }
 
@@ -24,11 +60,14 @@ export class OffersContentComponent implements OnChanges {
   }
 
   dateStyling(date: Date): string {
-   return this.isNew(date) ? 'New' : (this.offerDaysAfterPosted(date) + 'd ago');
+    return this.isNew(date) ? 'New' : this.offerDaysAfterPosted(date) + 'd ago';
   }
 
   offerDaysAfterPosted(date: Date): string {
-    return ((this.today.getTime() - date.getTime()) / (1000 * 3600 * 24)).toFixed(0);
+    return (
+      (this.today.getTime() - date.getTime()) /
+      (1000 * 3600 * 24)
+    ).toFixed(0);
   }
 
   isNew(date: Date): boolean {

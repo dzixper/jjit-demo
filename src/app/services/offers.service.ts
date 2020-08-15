@@ -22,7 +22,7 @@ export class OffersService {
     switch (param) {
       case 'all':
         return OFFERS;
-      case 'salary':
+      case 'with-salary':
         return OFFERS.filter((offer) => ('salary' in offer));
     }
 
