@@ -9,14 +9,9 @@
         <span class="rightside">
           <span class="salary">
             {{ offer?.salary ? salaryStyling(offer.salary) : 'Undisclosed Salary'}}
-<!--            {{ thousandSeparator(offer.salary[0]) }}-->
-<!--            {{ offer?.salary ? offer.salary : 'dua lipa'}}-->
-<!--            <span class="line">-</span>-->
-<!--            {{ thousandSeparator(offer.salary[1]) }}-->
-<!--            {{ (offer.salary)[2] }}-->
           </span>
-          <span class="date">
-            {{(setNewDate(today.getTime() - offer.timePosted.getTime()) /(1000 * 3600 * 24)).toFixed(0)}}d ago
+          <span class="date" [ngClass]="{ 'new': isNew(offer.timePosted)}">
+            {{dateStyling(offer.timePosted)}}
           </span>
         </span>
       </div>
@@ -24,11 +19,11 @@
         <div class="first">
           <div class="company">
             <mat-icon>business</mat-icon>
-            {{ offer.company }}
+            <span>{{ offer.company }}</span>
           </div>
           <div class="location">
             <mat-icon>location_on</mat-icon>
-            {{ offer.location }}
+            <span>{{ offer.location }}</span>
           </div>
         </div>
         <div class="tags">

@@ -15,15 +15,7 @@ export class OffersService {
            timePosted: Date,
            salary?: [number, number, string]
            ): void {
-    OFFERS.push({
-      position,
-      company,
-      location,
-      remote,
-      salary,
-      tags,
-      timePosted
-    });
+    OFFERS.push({position, company, location, remote, salary, tags, timePosted});
   }
 
   getOffers(param: string): Array<Offer> {

@@ -24,6 +24,14 @@
   .first {
     display: flex;
     flex-direction: row;
+    > div {
+      display: flex;
+      align-items: center;
+      margin-right: 10px;
+      > * {
+        margin-right: 10px;
+      }
+    }
   }
   .tag {
     height: 22px;
@@ -48,7 +56,7 @@
   flex: 1;
   align-items: center;
   .date {
-    height: 22px;
+    height: 20px;
     padding: 0 7px;
     font-size: 11px;
     line-height: 20px;
@@ -59,10 +67,15 @@
     border: 1px solid rgb(224, 224, 224);
     display: inline-block;
     margin-left: 16px;
-    text-transform: lowercase;
     text-overflow: ellipsis;
     overflow: hidden;
     min-width: 1ch;
+  }
+  .new {
+    @extend .date;
+    color: rgb(66, 86, 239);
+    background: rgb(217, 221, 252);
+    border: 1px solid rgb(217, 221, 252);
   }
 }
 
