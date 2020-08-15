@@ -11,6 +11,11 @@ export class OffersComponent implements OnInit {
   today = new Date();
   offers: Array<Offer>;
   sortOptions: Array<string> = ['latest', 'highest salary', 'lowest salary'];
+  selectedOption = 'latest';
+
+  logg(param: any): void {
+    console.log(param);
+  }
 
   constructor(private offersService: OffersService) {}
 
@@ -25,7 +30,7 @@ export class OffersComponent implements OnInit {
       new Date('04 April 2019'),
       [300, 600, 'PLN']
     );
-    this.sortit('latest', this.offers);
+    this.sortit(this.selectedOption, this.offers);
   }
 
   setNewDate(date: number): Date {
@@ -33,6 +38,7 @@ export class OffersComponent implements OnInit {
   }
 
   sortit(prop: string, offers: Array<Offer>): void {
+    this.selectedOption = prop;
     offers.sort((a, b) => {
       switch (prop) {
         case 'latest':
