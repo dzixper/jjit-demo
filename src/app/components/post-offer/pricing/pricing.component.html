@@ -1,0 +1,17 @@
+<div class="adverts">
+  <div class="advert" *ngFor="let advert of adverts">
+    <div class="header">
+      <div class="title">{{advert.title}}</div>
+      <div class="price">{{advert.price}}</div>
+      <hr />
+    </div>
+    <div class="description">
+      <ul>
+        <li *ngFor="let listItem of listItems">{{listItem}}</li>
+      </ul>
+    </div>
+    <div class="post-a-job-button">
+      <button class="mat-button mat-flat-button" color="primary">Post a job</button>
+    </div>
+  </div>
+</div>

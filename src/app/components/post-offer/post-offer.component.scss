@@ -1,0 +1,86 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  min-height: 443px;
+  background: url("../../../assets/post-offer-background.jpg") no-repeat;
+
+
+  .inner {
+    position: relative;
+    max-width: 1250px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex: 1 1 0;
+
+    .text {
+      margin-top: 80px;
+      width: 42%;
+      color: #fff;
+      font-size: 35px;
+      font-weight: 600;
+      line-height: 1.1;
+    }
+    .bubbles {
+      position: absolute;
+      right: -100px;
+      z-index: 1;
+    }
+  }
+}
+
+.pricing-section {
+  border-radius: 4px;
+  position: relative;
+  background: white;
+  width: 1210px;
+  display: flex;
+  margin: -100px auto 0;
+  padding: 20px;
+  flex-direction: column;
+
+  .pricing-content {
+    padding-top: 67px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .h1 {
+      font-size: 30px;
+      font-weight: 600;
+      letter-spacing: 0.7px;
+      text-align: center;
+    }
+  }
+
+  .flags {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-end;
+    .flag {
+      z-index: 2;
+      cursor: pointer;
+      width: 40px;
+      height: 30px;
+      margin-left: 5px;
+      border: 1px solid rgba(0,0,0, 0.15);
+    }
+    .flag-us {
+      background-image: url("../../../assets/flag-us.svg");
+      background-repeat: no-repeat;
+    }
+    .flag-pl {
+      background-image: url("../../../assets/flag-pl.svg");
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+.disabled {
+  opacity: 0.4;
+}

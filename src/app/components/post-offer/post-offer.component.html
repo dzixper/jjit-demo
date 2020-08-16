@@ -1,1 +1,23 @@
-<p>post-offer works!</p>
+<div class="container">
+  <div class="header">
+    <div class="inner">
+      <div class="text">{{quote}}<br/>— {{author}}</div>
+      <img class="bubbles" src="https://justjoin.it/assets/pricing_page/technology_header-6ec4ba92e4c532a982e68004a49c0dedd6106e1a554888b3f9e7c0051b16f338.svg">
+    </div>
+  </div>
+  <div class="pricing-section">
+
+    <div class="flags">
+      <div class="flag flag-us" (click)="setLanguage('EN')" [ngClass]="{disabled: currentLanguage !== 'EN'}"></div>
+      <div class="flag flag-pl" (click)="setLanguage('PL')" [ngClass]="{disabled: currentLanguage !== 'PL'}"></div>
+    </div>
+
+
+
+    <div class="pricing-content">
+      <span class="h1">{{pricingHeader}}</span>
+      <app-pricing></app-pricing>
+    </div>
+
+  </div>
+</div>

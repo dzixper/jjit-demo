@@ -13,6 +13,7 @@ import { RouterModule,  Routes } from '@angular/router';
 import { PostOfferComponent } from './components/post-offer/post-offer.component';
 import { MainOfferPageComponent } from './components/main-offer-page/main-offer-page.component';
 import { OffersContentComponent } from './components/offers/offers-content/offers-content.component';
+import { PricingComponent } from './components/post-offer/pricing/pricing.component';
 
 const appRoutes: Routes = [
   { path: '', component: MainOfferPageComponent },
@@ -30,6 +31,7 @@ const appRoutes: Routes = [
     PostOfferComponent,
     MainOfferPageComponent,
     OffersContentComponent,
+    PricingComponent,
   ],
   imports: [
     BrowserModule,
