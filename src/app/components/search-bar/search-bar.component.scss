@@ -32,9 +32,9 @@ $gradient: #f5af19, #f12711, #FC466B, #3F5EFB,
 }
 
 .searchbar-content {
-  width: 100vw;
+  width: 100%;
   display: flex;
-  overflow: hidden;
+  overflow: scroll; // TODO -> media query
   flex-wrap: nowrap;
   justify-content: space-between;
 }
