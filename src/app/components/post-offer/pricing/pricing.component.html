@@ -2,16 +2,22 @@
   <div class="advert" *ngFor="let advert of adverts">
     <div class="header">
       <div class="title">{{advert.title}}</div>
-      <div class="price">{{advert.price}}</div>
-      <hr />
+      <div class="price">
+        <span class="money">{{advert.price}}</span>
+        <span class="currency">{{advert.currency}}</span>
+      </div>
     </div>
     <div class="description">
       <ul>
-        <li *ngFor="let listItem of listItems">{{listItem}}</li>
+        <li *ngFor="let item of advert.bundle">
+          <mat-icon *ngIf="item.active" [ngStyle]="{'color': '#9c27b0'}">check_circle_outline</mat-icon>
+          <mat-icon *ngIf="!item.active" [ngStyle]="{'color': '#E1E8F0'}">sentiment_dissatisfied</mat-icon>
+          {{item.text}}
+        </li>
       </ul>
-    </div>
-    <div class="post-a-job-button">
-      <button class="mat-button mat-flat-button" color="primary">Post a job</button>
+      <div class="post-a-job-button">
+        <button class="mat-button mat-raised-button color">Kup ogłoszenie</button>
+      </div>
     </div>
   </div>
 </div>

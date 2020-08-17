@@ -17,7 +17,7 @@ export const OFFERS: Array<Offer> = [
     remote: true,
     salary: [2000, 2000, 'PLN'],
     tags: ['JS', 'HTML', 'CSS', 'Angular'],
-    timePosted: new Date('08 07 2020 20:10:00 GMT'),
+    timePosted: new Date('08 06 2020 20:10:00 GMT'),
   },
   {
     position: 'Software Developer',
@@ -25,7 +25,7 @@ export const OFFERS: Array<Offer> = [
     location: 'Gdansk',
     remote: true,
     tags: ['JS', 'HTML', 'CSS', 'Angular'],
-    timePosted: new Date('08 07 2020 20:20:00 GMT'),
+    timePosted: new Date('08 03 2020 20:20:00 GMT'),
   },
   {
     position: 'Baby Junior Java Developer',
@@ -33,7 +33,7 @@ export const OFFERS: Array<Offer> = [
     location: 'Gdansk',
     remote: false,
     tags: ['Java', 'MoboDB'],
-    timePosted: new Date('08 07 2020 13:30:00 GMT'),
+    timePosted: new Date('08 01 2020 13:30:00 GMT'),
   },
   {
     position: 'Senior Software Developer',
@@ -42,7 +42,7 @@ export const OFFERS: Array<Offer> = [
     remote: false,
     salary: [12000, 16000, 'PLN'],
     tags: ['JS', 'HTML', 'CSS', 'Angular'],
-    timePosted: new Date('08 07 2020 15:35:00 GMT'),
+    timePosted: new Date('08 09 2020 15:35:00 GMT'),
   },
   {
     position: 'Senior C# Developer',
@@ -51,7 +51,7 @@ export const OFFERS: Array<Offer> = [
     remote: true,
     salary: [17000, 21000, 'PLN'],
     tags: ['C#', 'C++'],
-    timePosted: new Date('08 07 2020 16:37:00 GMT'),
+    timePosted: new Date('08 12 2020 16:37:00 GMT'),
   },
   {
     position: 'Senior Concrete Mixer Operator',
@@ -60,7 +60,7 @@ export const OFFERS: Array<Offer> = [
     remote: false,
     salary: [1680, 1720, 'PLN'],
     tags: ['Concrete', 'Shovel', 'Beer', 'Notfunny'],
-    timePosted: new Date('08 07 2020 09:38:00 GMT'),
+    timePosted: new Date('08 14 2020 09:38:00 GMT'),
   },
   {
     position: 'Senior Software Developer',
@@ -68,16 +68,7 @@ export const OFFERS: Array<Offer> = [
     location: 'Gdansk',
     remote: false,
     tags: ['JS', 'HTML', 'CSS', 'Angular'],
-    timePosted: new Date('08 07 2020 15:41:00 GMT'),
-  },
-  {
-    position: 'Senior Software Developer',
-    company: 'Neoteric',
-    location: 'Gdansk',
-    remote: false,
-    salary: [3000, 6000, 'PLN'],
-    tags: ['JS', 'HTML', 'CSS', 'Angular'],
-    timePosted: new Date('08 07 2020 15:43:00 GMT'),
+    timePosted: new Date('08 10 2020 15:41:00 GMT'),
   },
   {
     position: 'Senior Software Developer',
@@ -86,7 +77,7 @@ export const OFFERS: Array<Offer> = [
     remote: false,
     salary: [3000, 6000, 'PLN'],
     tags: ['JS', 'HTML', 'CSS', 'Angular'],
-    timePosted: new Date('08 07 2020 03:46:00 GMT'),
+    timePosted: new Date('08 17 2020 06:43:00 GMT'),
   },
   {
     position: 'Senior Software Developer',
@@ -95,7 +86,16 @@ export const OFFERS: Array<Offer> = [
     remote: false,
     salary: [3000, 6000, 'PLN'],
     tags: ['JS', 'HTML', 'CSS', 'Angular'],
-    timePosted: new Date('08 07 2020 06:51:00 GMT'),
+    timePosted: new Date('08 16 2020 03:46:00 GMT'),
+  },
+  {
+    position: 'Senior Software Developer',
+    company: 'Neoteric',
+    location: 'Gdansk',
+    remote: false,
+    salary: [3000, 6000, 'PLN'],
+    tags: ['JS', 'HTML', 'CSS', 'Angular'],
+    timePosted: new Date('08 04 2020 06:51:00 GMT'),
   },
   {
     position: 'Senior Software Developer',
@@ -113,6 +113,6 @@ export const OFFERS: Array<Offer> = [
     remote: false,
     salary: [3000, 6000, 'PLN'],
     tags: ['JS', 'HTML', 'CSS', 'Angular'],
-    timePosted: new Date('08 07 2020 21:54:00 GMT'),
+    timePosted: new Date('08 06 2020 21:54:00 GMT'),
   },
 ];

@@ -5,10 +5,87 @@
 }
 
 .advert {
+  flex-direction: column;
   width: 100%;
   margin: 0 20px;
   display: flex;
   border: 1px solid #E7E9ED;
   border-radius: 10px;
-  box-shadow: 0 15px 30px -1px rgba(214,231,249,0.55);
+  box-shadow: 0 15px 30px -1px rgba(214, 231, 249, 0.55);
+
+  .header {
+    position: relative;
+    color: #37474f;
+    text-align: center;
+    padding: 56px 0 40px;
+
+    &:after {
+      position: absolute;
+      display: block;
+      content: '';
+      width: 80%;
+      left: 10%;
+      border: .5px solid #E1E8F0;
+      bottom: 0;
+    }
+
+    .title {
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    .price {
+      margin-top: 27px;
+
+      .money {
+        font-size: 50px;
+        font-weight: bold;
+      }
+
+      .currency {
+        color: #CFD8DC;
+        font-size: 16px;
+        font-weight: 500;
+        letter-spacing: 0.38px;
+      }
+    }
+  }
+
+  .description {
+    padding: 56px 0 42px 0;
+  }
+
+  .post-a-job-button {
+    display: flex;
+    justify-content: center;
+    .mat-button.mat-raised-button.color {
+      background: #ff4081;
+      color: white;
+      padding: 19px 26px;
+      font-size: 16px;
+      font-weight: 500;
+      border-radius: 50px !important;
+    }
+  }
+}
+
+ul {
+  margin-top: 0;
+  padding: 0 30px;
+
+  li {
+    align-items: center;
+    list-style-type: none;
+    display: flex;
+    margin-bottom: 31px;
+    color: #757575;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: left;
+
+    .mat-icon {
+      margin-right: 13px;
+      font-size: 28px;
+    }
+  }
 }
