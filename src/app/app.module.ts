@@ -15,6 +15,7 @@ import { MainOfferPageComponent } from './components/main-offer-page/main-offer-
 import { OffersContentComponent } from './components/offers/offers-content/offers-content.component';
 import { PricingComponent } from './components/post-offer/pricing/pricing.component';
 import { PostOfferFormComponent } from './components/post-offer/post-offer-form/post-offer-form.component';
+import { FormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   { path: '', component: MainOfferPageComponent },
@@ -40,7 +41,8 @@ const appRoutes: Routes = [
     BrowserModule,
     MaterialModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

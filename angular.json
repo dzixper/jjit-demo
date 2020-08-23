@@ -32,6 +32,7 @@
               "src/styles/offers.scss",
               "src/styles/dialog.scss",
               "src/styles/search-bar.scss",
+              "src/styles/post-offer.scss",
               "src/styles/styles.scss"
             ],
             "scripts": []

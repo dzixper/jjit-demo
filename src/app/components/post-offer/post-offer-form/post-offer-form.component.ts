@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostOfferFormComponent implements OnInit {
 
+  stepperLabels: Array<string> = ['Create', 'Verify', 'Payment', 'Publish'];
+
   constructor() { }
 
   ngOnInit(): void {

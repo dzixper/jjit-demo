@@ -12,11 +12,11 @@
         <li *ngFor="let item of advert.bundle">
           <mat-icon *ngIf="item.active" [ngStyle]="{'color': '#9c27b0'}">check_circle_outline</mat-icon>
           <mat-icon *ngIf="!item.active" [ngStyle]="{'color': '#E1E8F0'}">sentiment_dissatisfied</mat-icon>
-          {{item.text}}
+          <span>{{item.text}}</span>
         </li>
       </ul>
       <div class="post-a-job-button">
-        <a class="mat-button mat-raised-button color" routerLink="/post-offer-form">Kup ogłoszenie</a>
+        <a class="mat-button mat-raised-button color" routerLink="/post-offer-form">{{postButton}}</a>
       </div>
     </div>
   </div>

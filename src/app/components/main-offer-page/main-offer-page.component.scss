@@ -55,6 +55,7 @@
   height: 100%;
   width: 100%;
   flex-direction: row;
+  overflow: auto;
 }
 
 .column {
@@ -68,4 +69,9 @@
 
 .column > * {
   width: 100%;
+}
+
+:host {
+  height: 100%;
+  overflow: auto;
 }

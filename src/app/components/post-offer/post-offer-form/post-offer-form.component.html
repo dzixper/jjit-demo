@@ -1,1 +1,91 @@
-<p>post-offer-form works!</p>
+<mat-horizontal-stepper linear #stepper class="stepper">
+  <mat-step color="accent" *ngFor="let label of stepperLabels">
+    <ng-template matStepLabel>
+      <div [ngClass]="{'active': label == 'Create'}">{{label}}</div>
+    </ng-template>
+  </mat-step>
+</mat-horizontal-stepper>
+<div class="container">
+  <mat-card class="mat-elevation-z0">
+    <div class="row">
+      <div class="back-button" routerLink="/post-offer">
+        <mat-icon>keyboard_backspace</mat-icon>
+        Back
+      </div>
+      <div class="logo-upload">
+        <div class="link">
+          <mat-icon class="photo">add_a_photo</mat-icon>
+          <span>Upload logo * <mat-icon>help_outline</mat-icon></span></div>
+      </div>
+      <div class="column">
+        <mat-form-field>
+          <mat-label>Short company name</mat-label>
+          <input matInput required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Company Website</mat-label>
+          <input matInput required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Company size</mat-label>
+          <input matInput placeholder="10-23" required>
+        </mat-form-field>
+      </div>
+      <div class="column last">
+        <div class="blank"></div>
+        <mat-form-field>
+          <mat-label>Choose company type</mat-label>
+          <select matNativeControl>
+            <option value="startup">Startup</option>
+            <option value="software house">Software House</option>
+            <option value="e-commerce">E-commerce</option>
+            <option value="corporation">Corporation</option>
+            <option value="other">Other</option>
+          </select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Choose company industry</mat-label>
+          <select matNativeControl>
+            <option value="fintech">Fintech</option>
+            <option value="blockchain">Blockchain</option>
+            <option value="medicine">Medicine</option>
+            <option value="iot">IoT</option>
+          </select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <mat-form-field>
+          <mat-label>Title</mat-label>
+          <input matInput required>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Choose an experience level</mat-label>
+          <select matNativeControl>
+            <option value="junior">Junior</option>
+            <option value="mid">Mid</option>
+            <option value="senior">Senior</option>
+          </select>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Choose an employment type</mat-label>
+          <select matNativeControl>
+            <option value="b2b">B2B</option>
+            <option value="permanent">Permanent</option>
+            <option value="mandate contract">Mandate contract</option>
+          </select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row"></div>
+    <div class="row"></div>
+    <div class="row"></div>
+    <div class="row"></div>
+    <div class="row"></div>
+  </mat-card>
+</div>

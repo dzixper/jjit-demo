@@ -26,7 +26,7 @@
     <hr>
     <p>Seniority</p>
     <div class="options">
-      <button mat-stroked-button *ngFor="let level of levels">{{level}}</button>
+      <button mat-stroked-button *ngFor="let level of levels" (click)="makeButtonSelected(level)" [ngClass]="{'selected': level.isActive}">{{level.text}}</button>
     </div>
   </div>
   <div class="submit-section">

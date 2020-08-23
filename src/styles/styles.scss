@@ -5,17 +5,6 @@
 @import url('https://cdn.maptiler.com/mapbox-gl-js/v1.5.1/mapbox-gl.css');
 @include mat-core();
 
-
-
-app-main-offer-page {
-  height: 100%;
-}
-
-app-offers {
-  display: flex;
-  height: 100%;
-}
-
 * {
   font-family: Open Sans, sans-serif;
 }
@@ -43,9 +32,9 @@ body {
   width: 150px;
 }
 
-.mat-form-field-underline {
-  display: none !important;
-}
+//.mat-form-field-underline {
+//  display: none !important;
+//}
 
 .mat-dialog-container {
   width: 600px !important;
@@ -88,13 +77,12 @@ body {
 }
 
 // jak to wrzucam gdzie indziej to nie działa
-// searchbar-location-button
-.mat-menu-panel {
+.searchbar-menu-content {
   position: relative;
   padding: 24px;
   color: #757575;
-  //max-width: 440px !important;
-  //width: 440px !important;
+  max-width: 440px !important;
+  width: 440px !important;
 
   span {
     font-weight: 600;
@@ -110,7 +98,6 @@ body {
     font-family: Open Sans, sans-serif !important;
   }
 }
-// ^^ searchbar-location-button
 
 .mapboxgl-marker {
   background-color: hsla(20, 100, 50, 0.9);

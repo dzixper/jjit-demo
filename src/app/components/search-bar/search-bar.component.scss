@@ -56,6 +56,9 @@ $gradient: #f5af19, #f12711, #FC466B, #3F5EFB,
   color: #757575;
   @for $i from 0 through 22 {
     #button#{$i} {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       background: linear-gradient(to right, nth($gradient, $i+1), lighten(nth($gradient, $i+1), 10%));
       &:hover {
         box-shadow: rgb(228, 232, 240) 0 0 0 5px;
