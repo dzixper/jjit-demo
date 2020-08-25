@@ -14,7 +14,6 @@ import { Location } from '../../shared/models/location.model';
 })
 export class SearchBarComponent implements OnInit {
 
-  // TODO => tutaj serwisem czy tak na chama?
   technologies: Array<Technology> = TECHNOLOGIES;
   locations: Array<Location> = LOCATIONS;
 

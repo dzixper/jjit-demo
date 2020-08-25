@@ -5,6 +5,9 @@ $gradient: #f5af19, #f12711, #FC466B, #3F5EFB,
 #c31432, #cc5333, #0049B7, #6B5B95,
 #00b09b, #96c93d, #fca311;
 
+:host {
+  background: white;
+}
 
 .wrapper {
   display: flex; //TODO => jak daje flex to mat-buttons się powiększają
