@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { BUNDLES } from '../../../shared/bundles';
 
 @Component({
@@ -11,37 +11,29 @@ export class PricingComponent implements OnInit, OnChanges {
 
   postButton: string;
   bundles = new BUNDLES();
-  basicBundle: Array<object>;
-  premiumBundle: Array<object>;
-  businessBundle: Array<object>;
+  basicBundle = this.bundles.passBundle('basic', 'EN');
+  premiumBundle = this.bundles.passBundle('premium', 'EN');
+  businessBundle = this.bundles.passBundle('business', 'EN');
 
   adverts: Array<object> = [
     { title: 'Basic', price: 390, currency: 'PLN', bundle: this.basicBundle },
-    {
-      title: 'Premium',
-      price: 490,
-      currency: 'PLN',
-      bundle: this.premiumBundle,
-    },
-    {
-      title: 'Business',
-      price: 790,
-      currency: 'PLN',
-      bundle: this.businessBundle,
-    },
+    { title: 'Premium', price: 490, currency: 'PLN', bundle: this.premiumBundle },
+    { title: 'Business', price: 790, currency: 'PLN', bundle: this.businessBundle }
   ];
 
-  constructor(private changeDetection: ChangeDetectorRef) {}
+  constructor() {}
 
   ngOnInit(): void {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     this.postButton = this.currentLanguage === 'EN' ? 'Post a job' : 'Kup ogłoszenie';
-    this.basicBundle = this.bundles.passBundle('basic', 'PL');
-    this.premiumBundle = this.bundles.passBundle('premium', 'PL');
-    this.businessBundle = this.bundles.passBundle('business', 'PL');
-    this.changeDetection.detectChanges();
+    this.basicBundle = this.bundles.passBundle('basic', this.currentLanguage);
+    this.premiumBundle = this.bundles.passBundle('premium', this.currentLanguage);
+    this.businessBundle = this.bundles.passBundle('business', this.currentLanguage);
+    // this.changeDetection.detectChanges();
+    // console.log(this.basicBundle);
 
   }
+
 }

@@ -35,7 +35,7 @@
       <div class="column last">
         <mat-form-field>
           <mat-label>Choose company type</mat-label>
-          <select matNativeControl [(value)]="company">
+          <select matNativeControl [value]="company">
             <option value="startup">Startup</option>
             <option value="software house">Software House</option>
             <option value="e-commerce">E-commerce</option>
@@ -45,7 +45,7 @@
         </mat-form-field>
         <mat-form-field>
           <mat-label>Choose company industry</mat-label>
-          <select matNativeControl [(value)]="industry">
+          <select matNativeControl [value]="industry">
             <option value="fintech">Fintech</option>
             <option value="blockchain">Blockchain</option>
             <option value="medicine">Medicine</option>
@@ -64,7 +64,7 @@
       <div class="column">
         <mat-form-field>
           <mat-label>Choose an experience level</mat-label>
-          <select matNativeControl [(value)]="level">
+          <select matNativeControl [value]="level">
             <option value="junior">Junior</option>
             <option value="mid">Mid</option>
             <option value="senior">Senior</option>
@@ -74,7 +74,7 @@
       <div class="column">
         <mat-form-field>
           <mat-label>Choose an employment type</mat-label>
-          <select matNativeControl [(value)]="type">
+          <select matNativeControl [value]="type">
             <option value="b2b">B2B</option>
             <option value="permanent">Permanent</option>
             <option value="mandate contract">Mandate contract</option>
@@ -98,7 +98,7 @@
       <div class="column">
         <mat-form-field>
           <mat-label>Choose currency</mat-label>
-          <select matNativeControl [(value)]="currency">
+          <select matNativeControl [value]="currency">
             <option value="pln">PLN</option>
             <option value="eur">EUR</option>
             <option value="usd">USD</option>
@@ -133,13 +133,13 @@
       <div class="column">
         <mat-form-field>
           <mat-label>Office city</mat-label>
-          <input matInput required placeholder="Gdansk" />
+          <input matInput required placeholder="Gdansk" (keyup)="city = $event.target.value" (change)="resolveLocationCall()"/>
         </mat-form-field>
       </div>
       <div class="column">
         <mat-form-field>
           <mat-label>Office street / Business center</mat-label>
-          <input matInput required placeholder="Marynarki Polskiej 163" />
+          <input matInput required placeholder="Marynarki Polskiej 163" (keyup)="street = $event.target.value" (change)="resolveLocationCall()"/>
         </mat-form-field>
       </div>
       <div class="column">
@@ -205,6 +205,7 @@ Informujemy, że administratorem danych jest _______ z siedzibą w _______, ul. 
 <div class="footer">
   <div class="madeby"><span class="highlight">made by: </span><span>szymonolcen</span></div>
   <div class="links">
+    <button>guziok</button>
     <a href="">Tylko Tu DołąCZ</a>
     <a href="">About us</a>
     <a href="">Brand Stories</a>

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Technology } from '../../../shared/models/technology.model';
 import { TECHNOLOGIES } from '../../../shared/technologies';
+import { MapComponent } from '../../map/map.component';
 
 @Component({
   selector: 'app-post-offer-form',
@@ -16,10 +17,21 @@ export class PostOfferFormComponent implements OnInit {
   level = '';
   type = '';
   currency = '';
+  city = '';
+  street = '';
+
+  @ViewChild(MapComponent) worldMap: MapComponent;
 
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  resolveLocationCall(): void {
+    if (this.city) {
+      this.worldMap.resolveLocation(this.city, this.street);
+    }
+  }
+
 
 }
