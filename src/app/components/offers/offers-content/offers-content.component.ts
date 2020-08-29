@@ -36,15 +36,6 @@ export class OffersContentComponent implements OnChanges, OnInit, OnDestroy {
         this.offers = this.offersService.getOffers('all');
       }
     });
-    // this.offersService.addOffer(
-    //   'mati',
-    //   'mati',
-    //   'Chwaszczyno',
-    //   false,
-    //   ['masno ni'],
-    //   new Date('08 15 2020 18:50'),
-    //   [300, 600, 'EUR']
-    // );
   }
 
   ngOnDestroy(): void {
@@ -63,15 +54,15 @@ export class OffersContentComponent implements OnChanges, OnInit, OnDestroy {
     return this.isNew(date) ? 'New' : this.offerDaysAfterPosted(date) + 'd ago';
   }
 
-  offerDaysAfterPosted(date: Date): string {
-    return (
+  offerDaysAfterPosted(date: Date): number {
+    return Math.floor(
       (this.today.getTime() - date.getTime()) /
       (1000 * 3600 * 24)
-    ).toFixed(0);
+    );
   }
 
   isNew(date: Date): boolean {
-    return this.offerDaysAfterPosted(date) === '0';
+    return this.offerDaysAfterPosted(date) <= 1;
   }
 
   salaryStyling(salary: [number, number, string]): string {
