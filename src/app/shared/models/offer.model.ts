@@ -3,7 +3,8 @@ export interface Offer {
   company: string;
   location: string;
   remote: boolean;
-  salary?: [number, number, string];
+  salary?: [number, number];
+  currency?: string;
   tags: Array<string> | string;
   timePosted: Date;
 }

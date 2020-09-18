@@ -1,0 +1,31 @@
+<mat-card>
+  <div class="container">
+    <div class="logo">
+      <img src="assets/logo.png" alt="logo" class="logo">
+    </div>
+    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm.value)">
+      <div class="input-field">
+        <mat-icon>email</mat-icon>
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput ngModel name="email"/>
+        </mat-form-field>
+      </div>
+      <div class="input-field">
+        <mat-icon>lock</mat-icon>
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input matInput type="password" ngModel name="password"/>
+        </mat-form-field>
+      </div>
+      <div class="checkbox">
+        <mat-checkbox>Remember me</mat-checkbox>
+      </div>
+      <div class="submit-button">
+        <button mat-flat-button color="accent" type="submit">{{ isLoginMode ? 'Sign in' : 'Sign up'}}</button>
+        <button mat-stroked-button class="userMode" (click)="switchMode()" type="button">{{ isLoginMode ? 'Create a new user' : 'Switch to login mode'}}</button>
+      </div>
+    </form>
+    <div class="pwd-recovery">Forgot password?</div>
+  </div>
+</mat-card>

@@ -61,7 +61,7 @@
   }
 }
 
-@for $i from 0 through 1000 {
+@for $i from 0 through 1000 { //na demo wystarczy
   #offer-card#{$i},
   #offer-card-salary#{$i} {
     border-left-color: hsl(random(360), 80, 70) !important;

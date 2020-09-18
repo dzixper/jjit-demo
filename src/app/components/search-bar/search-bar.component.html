@@ -52,7 +52,8 @@
           *ngFor="let technology of technologies; let i = index"
         >
           <button mat-mini-fab id="button{{ i }}" class="mat-elevation-z0">
-            <mat-icon inline>all_inclusive</mat-icon>
+            <img *ngIf="technology.icon" src="{{technology.icon}}" class="icons"/>
+            <span *ngIf="!technology.icon">All</span>
           </button>
           <span>{{ technology.name }}</span>
         </div>

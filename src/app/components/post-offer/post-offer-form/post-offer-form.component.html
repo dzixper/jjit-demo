@@ -5,212 +5,221 @@
     </ng-template>
   </mat-step>
 </mat-horizontal-stepper>
-<div class="container">
-  <mat-card class="mat-elevation-z0">
-    <div class="row">
-      <div class="back-button" routerLink="/post-offer">
-        <mat-icon>keyboard_backspace</mat-icon>
-        Back
-      </div>
-      <div class="column logo-upload">
-        <div class="link">
-          <mat-icon class="photo">add_a_photo</mat-icon>
-          <span>Upload logo * <mat-icon>help_outline</mat-icon></span>
+<form #offerForm="ngForm" (ngSubmit)="onSubmit(offerForm.value)">
+  <div class="container">
+    <mat-card class="mat-elevation-z0">
+      <div class="row">
+        <div class="back-button" routerLink="/post-offer">
+          <mat-icon>keyboard_backspace</mat-icon>
+          Back
+        </div>
+        <div class="column logo-upload">
+          <div class="link">
+            <mat-icon class="photo">add_a_photo</mat-icon>
+            <span>Upload logo * <mat-icon>help_outline</mat-icon></span>
+          </div>
+        </div>
+        <div class="column">
+          <mat-form-field>
+            <mat-label>Short company name</mat-label>
+            <input matInput required ngModel name="company"/>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Company Website</mat-label>
+            <input matInput required/>
+          </mat-form-field>
+          <mat-form-field [floatLabel]="'always'">
+            <mat-label>Company size</mat-label>
+            <input matInput placeholder="10-23" required/>
+          </mat-form-field>
+        </div>
+        <div class="column last">
+          <mat-form-field>
+            <mat-label>Choose company type</mat-label>
+            <select matNativeControl [value]="company">
+              <option value="startup">Startup</option>
+              <option value="software house">Software House</option>
+              <option value="e-commerce">E-commerce</option>
+              <option value="corporation">Corporation</option>
+              <option value="other">Other</option>
+            </select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Choose company industry</mat-label>
+            <select matNativeControl [value]="industry">
+              <option value="fintech">Fintech</option>
+              <option value="blockchain">Blockchain</option>
+              <option value="medicine">Medicine</option>
+              <option value="iot">IoT</option>
+            </select>
+          </mat-form-field>
         </div>
       </div>
-      <div class="column">
-        <mat-form-field>
-          <mat-label>Short company name</mat-label>
-          <input matInput required />
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Company Website</mat-label>
-          <input matInput required />
-        </mat-form-field>
-        <mat-form-field [floatLabel]="'always'">
-          <mat-label>Company size</mat-label>
-          <input matInput placeholder="10-23" required/>
-        </mat-form-field>
+      <div class="row">
+        <div class="column">
+          <mat-form-field>
+            <mat-label>Title</mat-label>
+            <input matInput required ngModel name="position"/>
+          </mat-form-field>
+        </div>
+        <div class="column">
+          <mat-form-field>
+            <mat-label>Choose an experience level</mat-label>
+            <select matNativeControl [value]="level">
+              <option value="junior">Junior</option>
+              <option value="mid">Mid</option>
+              <option value="senior">Senior</option>
+            </select>
+          </mat-form-field>
+        </div>
+        <div class="column">
+          <mat-form-field>
+            <mat-label>Choose an employment type</mat-label>
+            <select matNativeControl [value]="type">
+              <option value="b2b">B2B</option>
+              <option value="permanent">Permanent</option>
+              <option value="mandate contract">Mandate contract</option>
+            </select>
+          </mat-form-field>
+        </div>
       </div>
-      <div class="column last">
-        <mat-form-field>
-          <mat-label>Choose company type</mat-label>
-          <select matNativeControl [value]="company">
-            <option value="startup">Startup</option>
-            <option value="software house">Software House</option>
-            <option value="e-commerce">E-commerce</option>
-            <option value="corporation">Corporation</option>
-            <option value="other">Other</option>
-          </select>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Choose company industry</mat-label>
-          <select matNativeControl [value]="industry">
-            <option value="fintech">Fintech</option>
-            <option value="blockchain">Blockchain</option>
-            <option value="medicine">Medicine</option>
-            <option value="iot">IoT</option>
-          </select>
-        </mat-form-field>
+      <div class="row">
+        <div class="column">
+          <mat-form-field>
+            <mat-label>Monthly salary from (invoice net)</mat-label>
+            <input matInput ngModel name="salarylow"/>
+          </mat-form-field>
+        </div>
+        <div class="column">
+          <mat-form-field>
+            <mat-label>Monthly salary to (invoice net)</mat-label>
+            <input matInput ngModel name="salaryhigh"/>
+          </mat-form-field>
+        </div>
+        <div class="column">
+          <mat-form-field>
+            <mat-label>Choose currency</mat-label>
+            <select matNativeControl [value]="currency" ngModel name="currency">
+              <option value="pln">PLN</option>
+              <option value="eur">EUR</option>
+              <option value="usd">USD</option>
+              <option value="gbp">GBP</option>
+              <option value="chf">CHF</option>
+            </select>
+          </mat-form-field>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="column">
-        <mat-form-field>
-          <mat-label>Title</mat-label>
-          <input matInput required />
-        </mat-form-field>
+      <div class="row">
+        <mat-checkbox><span class="header">Online interview available</span></mat-checkbox>
       </div>
-      <div class="column">
-        <mat-form-field>
-          <mat-label>Choose an experience level</mat-label>
-          <select matNativeControl [value]="level">
-            <option value="junior">Junior</option>
-            <option value="mid">Mid</option>
-            <option value="senior">Senior</option>
-          </select>
-        </mat-form-field>
+      <div class="row"><span class="header">Tech stack</span></div>
+      <div class="row">
+        <div class="column">
+          <mat-form-field>
+            <mat-label>Select technology or write a new one</mat-label>
+            <input matInput/>
+          </mat-form-field>
+        </div>
+        <div class="column"></div>
+        <div class="column"></div>
       </div>
-      <div class="column">
-        <mat-form-field>
-          <mat-label>Choose an employment type</mat-label>
-          <select matNativeControl [value]="type">
-            <option value="b2b">B2B</option>
-            <option value="permanent">Permanent</option>
-            <option value="mandate contract">Mandate contract</option>
-          </select>
-        </mat-form-field>
+      <div class="row">
+        <div class="column">
+          <span class="header">Job description</span>
+          <textarea class="big"></textarea>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="column">
-        <mat-form-field>
-          <mat-label>Monthly salary from (invoice net)</mat-label>
-          <input matInput />
-        </mat-form-field>
+      <div class="row"><span class="header">Choose your location</span></div>
+      <div class="row">
+        <div class="column">
+          <mat-form-field>
+            <mat-label>Office city</mat-label>
+            <input matInput required placeholder="Gdansk" (keyup)="city = $event.target.value"
+                   (change)="resolveLocationCall()"/>
+          </mat-form-field>
+        </div>
+        <div class="column">
+          <mat-form-field>
+            <mat-label>Office street / Business center</mat-label>
+            <input matInput required placeholder="Marynarki Polskiej 163" (keyup)="street = $event.target.value"
+                   (change)="resolveLocationCall()"/>
+          </mat-form-field>
+        </div>
+        <div class="column">
+          <mat-checkbox>Fully remote</mat-checkbox>
+        </div>
       </div>
-      <div class="column">
-        <mat-form-field>
-          <mat-label>Monthly salary to (invoice net)</mat-label>
-          <input matInput />
-        </mat-form-field>
+      <div class="row map">
+        <app-map></app-map>
       </div>
-      <div class="column">
-        <mat-form-field>
-          <mat-label>Choose currency</mat-label>
-          <select matNativeControl [value]="currency">
-            <option value="pln">PLN</option>
-            <option value="eur">EUR</option>
-            <option value="usd">USD</option>
-            <option value="gbp">GBP</option>
-            <option value="chf">CHF</option>
-          </select>
-        </mat-form-field>
-      </div>
-    </div>
-    <div class="row">
-      <mat-checkbox><span class="header">Online interview available</span></mat-checkbox>
-    </div>
-    <div class="row"><span class="header">Tech stack</span></div>
-    <div class="row">
-      <div class="column">
-        <mat-form-field>
-          <mat-label>Select technology or write a new one</mat-label>
-          <input matInput />
-        </mat-form-field>
-      </div>
-      <div class="column"></div>
-      <div class="column"></div>
-    </div>
-    <div class="row">
-      <div class="column">
-        <span class="header">Job description</span>
-        <textarea class="big"></textarea>
-      </div>
-    </div>
-    <div class="row"><span class="header">Choose your location</span></div>
-    <div class="row">
-      <div class="column">
-        <mat-form-field>
-          <mat-label>Office city</mat-label>
-          <input matInput required placeholder="Gdansk" (keyup)="city = $event.target.value" (change)="resolveLocationCall()"/>
-        </mat-form-field>
-      </div>
-      <div class="column">
-        <mat-form-field>
-          <mat-label>Office street / Business center</mat-label>
-          <input matInput required placeholder="Marynarki Polskiej 163" (keyup)="street = $event.target.value" (change)="resolveLocationCall()"/>
-        </mat-form-field>
-      </div>
-      <div class="column">
-        <mat-checkbox>Fully remote</mat-checkbox>
-      </div>
-    </div>
-    <div class="row map">
-      <app-map></app-map>
-    </div>
-    <div class="row">
-      <div class="column">
-        <span class="label technologyLabel">Choose main technology</span>
-        <div class="technologies">
-          <div
-            class="technology"
-            *ngFor="let technology of technologies; let i = index"
-          >
-            <button mat-mini-fab id="button{{ i }}" class="mat-elevation-z0">
-              <mat-icon inline>all_inclusive</mat-icon>
-            </button>
-            <span>{{ technology.name }}</span>
+      <div class="row">
+        <div class="column">
+          <span class="label technologyLabel">Choose main technology</span>
+          <div class="technologies">
+            <div
+              class="technology"
+              *ngFor="let technology of technologies; let i = index"
+            >
+              <button mat-mini-fab id="button{{ i }}" class="mat-elevation-z0" type="button">
+                <img *ngIf="technology.icon" src="{{technology.icon}}" class="icons"/>
+                <span *ngIf="!technology.icon">All</span>
+              </button>
+              <span>{{ technology.name }}</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="row"><span class="header">How to apply</span></div>
-    <div class="row">
-      <div class="column">
-        <mat-form-field>
-          <mat-label>Enter apply mail or paste link</mat-label>
-          <input matInput required />
-        </mat-form-field>
+      <div class="row"><span class="header">How to apply</span></div>
+      <div class="row">
+        <div class="column">
+          <mat-form-field>
+            <mat-label>Enter apply mail or paste link</mat-label>
+            <input matInput required/>
+          </mat-form-field>
+        </div>
+        <div class="column"></div>
+        <div class="column"></div>
       </div>
-      <div class="column"></div>
-      <div class="column"></div>
-    </div>
-    <div class="row"><span class="header">Agreements</span></div>
-    <div class="row">
-      <div class="column">
-        <span class="label">Information clause</span>
-        <textarea class="big">
+      <div class="row"><span class="header">Agreements</span></div>
+      <div class="row">
+        <div class="column">
+          <span class="label">Information clause</span>
+          <textarea class="big">
 Informujemy, że administratorem danych jest _______ z siedzibą w _______, ul. _______(dalej jako "administrator"). Masz prawo do żądania dostępu do swoich danych osobowych, ich sprostowania, usunięcia lub ograniczenia przetwarzania, prawo do wniesienia sprzeciwu wobec przetwarzania, a także prawo do przenoszenia danych oraz wniesienia skargi do organu nadzorczego. Dane osobowe przetwarzane będą w celu realizacji procesu rekrutacji. Podanie danych w zakresie wynikającym z ustawy z dnia 26 czerwca 1974 r. Kodeks pracy jest obowiązkowe. W pozostałym zakresie podanie danych jest dobrowolne. A' propos szczania do zlewu. Kiedyś jeszcze w gimbazie był taki Michał co zawsze był przygotowany na lekcje, zawsze miał zadania domowe, dobrze się uczył itp. Pewnego dnia pojechałem na rower i koło Biedronki jak chciałem przejechać na drugą stronę ulicy(jechałem po ścieżce rowerowej przy chodniku) patrzę na prawo- nic nie jedzie, na lewo też no to jadę, a że światło miałem zielone to niczego się nie bałem i później jeszcze przez park jechałem i w końcu do domu.  Zgoda na przetwarzanie danych osobowych może zostać wycofana w dowolnym momencie. Odbiorcą danych jest serwis Tylko Tu DołąCZ oraz inne podmioty, którym powierzyliśmy przetwarzanie danych w związku z rekrutacją.</textarea>
-        <mat-checkbox><span class="label">Display consent for future recruitment</span></mat-checkbox>
-        <span class="label">Processing data in future recruitment</span>
-        <textarea disabled>Wyrażam zgodę na przetwarzanie moich danych osobowych dla celów przyszłych rekrutacji.</textarea>
-        <mat-checkbox><span class="label">Display your custom consent</span></mat-checkbox>
+          <mat-checkbox><span class="label">Display consent for future recruitment</span></mat-checkbox>
+          <span class="label">Processing data in future recruitment</span>
+          <textarea
+            disabled>Wyrażam zgodę na przetwarzanie moich danych osobowych dla celów przyszłych rekrutacji.</textarea>
+          <mat-checkbox><span class="label">Display your custom consent</span></mat-checkbox>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="column">
-        <mat-form-field>
-          <mat-label>Your consent title</mat-label>
-          <input matInput disabled/>
-        </mat-form-field>
-        <textarea disabled></textarea>
+      <div class="row">
+        <div class="column">
+          <mat-form-field>
+            <mat-label>Your consent title</mat-label>
+            <input matInput disabled/>
+          </mat-form-field>
+          <textarea disabled></textarea>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <button mat-flat-button color="accent">Next step</button>
-    </div>
-  </mat-card>
-</div>
+      <div class="row">
+        <button mat-flat-button color="accent" type="submit">Next step</button>
+      </div>
+    </mat-card>
+  </div>
+</form>
 <div class="footer">
   <div class="madeby"><span class="highlight">made by: </span><span>szymonolcen</span></div>
   <div class="links">
-    <button>guziok</button>
     <a href="">Tylko Tu DołąCZ</a>
     <a href="">About us</a>
     <a href="">Brand Stories</a>
     <a href="">Rocket Jobs</a>
-    <a href="">Terms <mat-icon inline>picture_as_pdf</mat-icon></a>
-    <a href="">Policy <mat-icon inline>picture_as_pdf</mat-icon></a>
+    <a href="">Terms
+      <mat-icon inline>picture_as_pdf</mat-icon>
+    </a>
+    <a href="">Policy
+      <mat-icon inline>picture_as_pdf</mat-icon>
+    </a>
   </div>
 </div>

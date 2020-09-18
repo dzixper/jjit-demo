@@ -9,7 +9,6 @@ import {
 import { Offer } from '../../../shared/models/offer.model';
 import { OffersService } from '../../../services/offers.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-offers-content',
@@ -18,7 +17,8 @@ import { Observable } from 'rxjs';
 })
 export class OffersContentComponent implements OnChanges, OnInit, OnDestroy {
   today = new Date();
-  offers: Array<Offer> = this.offersService.getOffers('all');
+  offers = [];
+  allOffers = [];
   @Input() selectedOption: string;
   subscriptionHandler: any;
 
@@ -29,11 +29,21 @@ export class OffersContentComponent implements OnChanges, OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.offersService.getOffers().subscribe(
+      (res) => {
+        this.allOffers = res;
+        this.offers = res;
+        this.sortOffers('latest', this.offers);
+      },
+      (err) => console.log(err)
+    );
     this.subscriptionHandler = this.router.events.subscribe(() => {
       if (this.route.snapshot.queryParams['tab'] === 'with-salary') {
-        this.offers = this.offersService.getOffers('with-salary');
+        this.offers = this.allOffers.filter(
+          (offer) => offer.salary[0] !== undefined
+        );
       } else {
-        this.offers = this.offersService.getOffers('all');
+        this.offers = this.allOffers;
       }
     });
   }
@@ -43,7 +53,7 @@ export class OffersContentComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.sortit(changes.selectedOption.currentValue, this.offers);
+    this.sortOffers(changes.selectedOption.currentValue, this.offers);
   }
 
   setNewDate(date: number): Date {
@@ -55,9 +65,9 @@ export class OffersContentComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   offerDaysAfterPosted(date: Date): number {
+    date = new Date(date);
     return Math.floor(
-      (this.today.getTime() - date.getTime()) /
-      (1000 * 3600 * 24)
+      (this.today.getTime() - date.getTime()) / (1000 * 3600 * 24)
     );
   }
 
@@ -65,23 +75,23 @@ export class OffersContentComponent implements OnChanges, OnInit, OnDestroy {
     return this.offerDaysAfterPosted(date) <= 1;
   }
 
-  salaryStyling(salary: [number, number, string]): string {
-    return (salary[0] + ' - ' + salary[1] + ' ' + salary[2]).replace(
-      /([0-9]{3}\ )/g,
+  salaryStyling(salary: [number, number], currency: string): string {
+    return (salary[0] + ' - ' + salary[1] + ' ' + currency).replace(
+      /([0-9]{3} )/g,
       ' $1'
     );
   }
 
-  sortit(prop: string, offers: Array<Offer>): void {
+  sortOffers(prop: string, offers: Array<Offer>): void {
     offers.sort((a, b) => {
       switch (prop) {
         case 'latest':
           return a.timePosted < b.timePosted ? 1 : -1;
         case 'lowest salary':
-          if (!('salary' in a)) {
+          if (a.salary[0] === undefined) {
             return 1;
           }
-          if (!('salary' in b)) {
+          if (b.salary[0] === undefined) {
             return -1;
           }
           return a.salary[0] > b.salary[0]
@@ -90,10 +100,10 @@ export class OffersContentComponent implements OnChanges, OnInit, OnDestroy {
             ? 0
             : -1;
         case 'highest salary':
-          if (!('salary' in a)) {
+          if (a.salary[0] === undefined) {
             return 1;
           }
-          if (!('salary' in b)) {
+          if (b.salary[0] === undefined) {
             return -1;
           }
           return a.salary[0] > b.salary[0]

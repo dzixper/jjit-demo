@@ -8,7 +8,7 @@
         <span class="position">{{ offer.position }}</span>
         <span class="rightside">
           <span class="salary">
-            {{ offer?.salary ? salaryStyling(offer.salary) : 'Undisclosed Salary'}}
+            {{ offer?.salary[0] !== undefined ? salaryStyling(offer.salary, offer.currency) : 'Undisclosed Salary'}}
           </span>
           <span class="date" [ngClass]="{ 'new': isNew(offer.timePosted)}">
             {{dateStyling(offer.timePosted)}}
