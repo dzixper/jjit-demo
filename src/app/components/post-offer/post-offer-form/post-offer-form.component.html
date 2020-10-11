@@ -14,9 +14,10 @@
           Back
         </div>
         <div class="column logo-upload">
-          <div class="link">
+          <div class="link" (click)="photoInput.click()">
             <mat-icon class="photo">add_a_photo</mat-icon>
             <span>Upload logo * <mat-icon>help_outline</mat-icon></span>
+            <input type="file" class="photoInput" allow="image/*" (change)="toBase64($event.target.files[0])" #photoInput/>
           </div>
         </div>
         <div class="column">
@@ -26,31 +27,31 @@
           </mat-form-field>
           <mat-form-field>
             <mat-label>Company Website</mat-label>
-            <input matInput required/>
+            <input matInput required ngModel name="website"/>
           </mat-form-field>
           <mat-form-field [floatLabel]="'always'">
             <mat-label>Company size</mat-label>
-            <input matInput placeholder="10-23" required/>
+            <input matInput placeholder="10 - 23" required ngModel name="companySize"/>
           </mat-form-field>
         </div>
         <div class="column last">
           <mat-form-field>
             <mat-label>Choose company type</mat-label>
-            <select matNativeControl [value]="company">
-              <option value="startup">Startup</option>
-              <option value="software house">Software House</option>
-              <option value="e-commerce">E-commerce</option>
-              <option value="corporation">Corporation</option>
-              <option value="other">Other</option>
+            <select required name="companyType" ngModel matNativeControl [value]="companyType">
+              <option value="Startup">Startup</option>
+              <option value="Software House">Software House</option>
+              <option value="E-commerce">E-commerce</option>
+              <option value="Corporation">Corporation</option>
+              <option value="Other">Other</option>
             </select>
           </mat-form-field>
           <mat-form-field>
             <mat-label>Choose company industry</mat-label>
-            <select matNativeControl [value]="industry">
-              <option value="fintech">Fintech</option>
-              <option value="blockchain">Blockchain</option>
-              <option value="medicine">Medicine</option>
-              <option value="iot">IoT</option>
+            <select matNativeControl required ngModel name='industry' [value]="industry">
+              <option value="Fintech">Fintech</option>
+              <option value="Blockchain">Blockchain</option>
+              <option value="Medicine">Medicine</option>
+              <option value="IoT">IoT</option>
             </select>
           </mat-form-field>
         </div>
@@ -65,20 +66,20 @@
         <div class="column">
           <mat-form-field>
             <mat-label>Choose an experience level</mat-label>
-            <select matNativeControl [value]="level">
-              <option value="junior">Junior</option>
-              <option value="mid">Mid</option>
-              <option value="senior">Senior</option>
+            <select matNativeControl ngModel required name="experience" [value]="experience">
+              <option value="Junior">Junior</option>
+              <option value="Mid">Mid</option>
+              <option value="Senior">Senior</option>
             </select>
           </mat-form-field>
         </div>
         <div class="column">
           <mat-form-field>
             <mat-label>Choose an employment type</mat-label>
-            <select matNativeControl [value]="type">
-              <option value="b2b">B2B</option>
-              <option value="permanent">Permanent</option>
-              <option value="mandate contract">Mandate contract</option>
+            <select matNativeControl ngModel required name="contract" [value]="contract">
+              <option value="B2B">B2B</option>
+              <option value="Permanent">Permanent</option>
+              <option value="Mandate contract">Mandate contract</option>
             </select>
           </mat-form-field>
         </div>
@@ -100,11 +101,11 @@
           <mat-form-field>
             <mat-label>Choose currency</mat-label>
             <select matNativeControl [value]="currency" ngModel name="currency">
-              <option value="pln">PLN</option>
-              <option value="eur">EUR</option>
-              <option value="usd">USD</option>
-              <option value="gbp">GBP</option>
-              <option value="chf">CHF</option>
+              <option value="PLN">PLN</option>
+              <option value="EUR">EUR</option>
+              <option value="USD">USD</option>
+              <option value="GBP">GBP</option>
+              <option value="CHF">CHF</option>
             </select>
           </mat-form-field>
         </div>
@@ -125,23 +126,25 @@
       </div>
       <div class="row">
         <div class="column">
-          <span class="header">Job description</span>
-          <textarea class="big"></textarea>
+          <mat-form-field>
+            <span class="header">Job description</span>
+            <textarea matNativeControl ngModel class="big" name="description"></textarea>
+          </mat-form-field>
         </div>
       </div>
       <div class="row"><span class="header">Choose your location</span></div>
       <div class="row">
         <div class="column">
-          <mat-form-field>
+          <mat-form-field [floatLabel]="'always'">
             <mat-label>Office city</mat-label>
-            <input matInput required placeholder="Gdansk" (keyup)="city = $event.target.value"
+            <input matInput required ngModel name="city" placeholder="Gdansk" (keyup)="city = $event.target.value"
                    (change)="resolveLocationCall()"/>
           </mat-form-field>
         </div>
         <div class="column">
-          <mat-form-field>
+          <mat-form-field [floatLabel]="'always'">
             <mat-label>Office street / Business center</mat-label>
-            <input matInput required placeholder="Marynarki Polskiej 163" (keyup)="street = $event.target.value"
+            <input matInput required ngModel name="street" placeholder="Marynarki Polskiej 163" (keyup)="street = $event.target.value"
                    (change)="resolveLocationCall()"/>
           </mat-form-field>
         </div>
@@ -156,16 +159,14 @@
         <div class="column">
           <span class="label technologyLabel">Choose main technology</span>
           <div class="technologies">
-            <div
-              class="technology"
-              *ngFor="let technology of technologies; let i = index"
-            >
-              <button mat-mini-fab id="button{{ i }}" class="mat-elevation-z0" type="button">
-                <img *ngIf="technology.icon" src="{{technology.icon}}" class="icons"/>
-                <span *ngIf="!technology.icon">All</span>
-              </button>
-              <span>{{ technology.name }}</span>
-            </div>
+              <div
+                class="technology"
+                *ngFor="let technology of technologies; let i = index">
+                <button mat-mini-fab id="button{{ i }}" class="mat-elevation-z0" type="button" (click)="setTech(technology.name, technology.color)" *ngIf="technology.name !== 'All'">
+                  <img src="{{technology.icon}}" class="icons"/>
+                </button>
+                <span *ngIf="technology.name !== 'All'">{{ technology.name }}</span>
+              </div>
           </div>
         </div>
       </div>
@@ -174,7 +175,7 @@
         <div class="column">
           <mat-form-field>
             <mat-label>Enter apply mail or paste link</mat-label>
-            <input matInput required/>
+            <input matInput ngModel required name="applyDestination"/>
           </mat-form-field>
         </div>
         <div class="column"></div>
@@ -189,7 +190,7 @@ Informujemy, że administratorem danych jest _______ z siedzibą w _______, ul. 
           <mat-checkbox><span class="label">Display consent for future recruitment</span></mat-checkbox>
           <span class="label">Processing data in future recruitment</span>
           <textarea
-            disabled>Wyrażam zgodę na przetwarzanie moich danych osobowych dla celów przyszłych rekrutacji.</textarea>
+            disabled>Wyrażam zgodę na student piwo dla celów przyszłych rekrutacji.</textarea>
           <mat-checkbox><span class="label">Display your custom consent</span></mat-checkbox>
         </div>
       </div>
@@ -203,7 +204,7 @@ Informujemy, że administratorem danych jest _______ z siedzibą w _______, ul. 
         </div>
       </div>
       <div class="row">
-        <button mat-flat-button color="accent" type="submit">Next step</button>
+        <button mat-flat-button color="accent" type="submit" routerLink="verify" [disabled]="!offerForm.valid || !tech || !image">Next step</button>
       </div>
     </mat-card>
   </div>

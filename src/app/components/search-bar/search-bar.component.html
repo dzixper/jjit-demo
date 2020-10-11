@@ -57,6 +57,16 @@
           </button>
           <span>{{ technology.name }}</span>
         </div>
+        <div class="mat-elevation-z0 more-technologies technology" id="more-technologies" [matMenuTriggerFor]="techmenu">
+          <mat-icon>more_horiz</mat-icon>
+        </div>
+        <mat-menu #techmenu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>dialpad</mat-icon>
+            <span>Redial</span>
+          </button>
+        </mat-menu>
+        <span></span>
       </div>
     </div>
     <div class="searchbar-filter-button">

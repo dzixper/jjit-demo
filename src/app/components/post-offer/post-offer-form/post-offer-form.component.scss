@@ -1,4 +1,4 @@
-$gradient: #f5af19, #f12711, #FC466B, #3F5EFB,
+$gradient: #f12711, #f5af19, #FC466B, #3F5EFB,
 #c471ed, #f64f59, #6dd5ed, #0f9b0f,
 #FDC830, #F37335, #302b63, #ED213A,
 #264653, #85144b , #4ca2cd, #24243e,
@@ -112,6 +112,7 @@ textarea {
     align-items: center;
     justify-content: center;
     color: #37474f;
+
     &:hover {
       color: #64407a;
       cursor: pointer;
@@ -177,5 +178,9 @@ textarea {
       color: #757575;
     }
   }
+}
+
+.photoInput {
+  display: none;
 }
 

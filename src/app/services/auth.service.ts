@@ -1,23 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  // API_KEY = 'AIzaSyC8dzoGlESBFpTiA8Uzmj1ULy_YhmyR6mk';
-  // user = new Subject<User>();
-
   private _registerUrl = 'http://localhost:3000/api/register';
   private _loginUrl = 'http://localhost:3000/api/login';
-  constructor(private http: HttpClient) {}
+  private _formUrl = 'http://localhost:3000/api/post-offer-form';
 
-  login(credentials: {email: string, password: string}): Observable<any> {
+  constructor(private http: HttpClient, private router: Router) {}
+
+  login(credentials: { email: string; password: string }): Observable<any> {
     return this.http.post<any>(this._loginUrl, credentials);
   }
 
-  signUp(credentials: {email: string, password: string}): Observable<any> {
+  signUp(credentials: { email: string; password: string }): Observable<any> {
     return this.http.post<any>(this._registerUrl, credentials);
   }
 
@@ -29,9 +29,11 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
-  private _formUrl = 'http://localhost:3000/api/post-offer-form';
-  verifyToken(): any {
+  verifyToken(): any { // Observable<HttpResponse<string>>
     return this.http.get<any>(this._formUrl);
   }
 
+  async isTokenVerified(): Promise<any> {
+    return await this.verifyToken().toPromise();
+  }
 }

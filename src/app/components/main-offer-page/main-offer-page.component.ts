@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OffersService } from '../../services/offers.service';
 
 @Component({
   selector: 'app-main-offer-page',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainOfferPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private offersService: OffersService) { }
 
   ngOnInit(): void {
+  }
+
+  canShowDetails(): boolean {
+    return this.offersService.isOfferLoaded;
   }
 
 }

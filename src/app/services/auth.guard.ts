@@ -6,11 +6,20 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor (private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {
+  }
 
-  canActivate(): boolean {
-    if (this.authService.isLoggedIn()) {
-      return true;
+  async canActivate(): Promise<boolean> {
+    if (this.authService.isLoggedIn()) { // && this.authService.isTokenVerified()
+      try {
+        const result = await this.authService.isTokenVerified();
+        console.log(result);
+        return result.valid;
+      } catch (e) {
+        console.log(e);
+        this.router.navigate(['/login']);
+        return false;
+      }
     } else {
       this.router.navigate(['/login']);
       return false;

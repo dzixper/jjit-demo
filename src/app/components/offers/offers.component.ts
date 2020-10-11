@@ -15,5 +15,4 @@ export class OffersComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
 }

@@ -1,14 +1,14 @@
-<a *ngFor="let offer of offers; let i = index" class="mat-card" id="offer-card-salary{{ i }}">
+<a (click)=showDetails(offer) *ngFor="let offer of offers" class="mat-card offer-card-salary" [ngStyle]="{'border-left-color': findTechColor(offer.mainTech)}">
   <div class="content">
     <div class="image-container">
-      <img src="assets/logo.png" alt="logo" class="image"/>
+      <img src="data:image/png;base64,{{ offer.logo }}" class="image"/>
     </div>
     <div class="info">
       <div class="head">
         <span class="position">{{ offer.position }}</span>
         <span class="rightside">
           <span class="salary">
-            {{ offer?.salary[0] !== undefined ? salaryStyling(offer.salary, offer.currency) : 'Undisclosed Salary'}}
+            {{salaryStyling(offer.salary, offer.currency)}}
           </span>
           <span class="date" [ngClass]="{ 'new': isNew(offer.timePosted)}">
             {{dateStyling(offer.timePosted)}}
@@ -23,7 +23,7 @@
           </div>
           <div class="location">
             <mat-icon>location_on</mat-icon>
-            <span>{{ offer.location }}</span>
+            <span>{{ offer.city }}</span>
           </div>
         </div>
         <div class="tags">

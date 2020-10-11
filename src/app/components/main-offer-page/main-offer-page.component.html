@@ -2,7 +2,8 @@
   <app-search-bar></app-search-bar>
   <div class="row">
     <div class="column">
-      <app-offers></app-offers>
+      <app-offers *ngIf="!canShowDetails()"></app-offers>
+      <app-offer-details *ngIf="canShowDetails()"></app-offer-details>
     </div>
     <div class="column">
       <app-map></app-map>

@@ -18,22 +18,26 @@ export class LoginPageComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(credentials: {email: string, password: string}): void {
-    console.log(credentials);
-    if (this.isLoginMode) {
-      this.authService.login(credentials).subscribe(
-        (res) => {
-          localStorage.setItem('token', res.token);
-          this.router.navigate(['/']);
-        },
-        (err) => console.log(err)
-      );
-    } else {
-      this.authService.signUp(credentials).subscribe(
-        (res) => {
-          localStorage.setItem('token', res.token);
-        },
-        (err) => console.log(err)
-      );
-    }
+    this.isLoginMode ? this.login(credentials) : this.signUp(credentials);
   }
+
+  signUp(credentials: {email: string, password: string}): void {
+    this.authService.signUp(credentials).subscribe(
+      (res) => {
+        localStorage.setItem('token', res.token);
+      },
+      (err) => console.log(err)
+    );
+  }
+
+  login(credentials: {email: string, password: string}): void {
+    this.authService.login(credentials).subscribe(
+      (res) => {
+        localStorage.setItem('token', res.token);
+        this.router.navigate(['/']);
+      },
+      (err) => console.log(err)
+    );
+  }
+
 }

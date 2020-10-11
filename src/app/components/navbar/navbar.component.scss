@@ -9,6 +9,8 @@
 .navbar-text {
   color: #99a1ab;
   font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .buttons {

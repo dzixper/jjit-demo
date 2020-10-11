@@ -20,13 +20,18 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { AuthGuard } from './services/auth.guard';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { OfferDetailsComponent } from './components/offers/offer-details/offer-details.component';
+import { VerifyOfferComponent } from './components/post-offer/post-offer-form/verify-offer/verify-offer.component';
 
 
 const appRoutes: Routes = [
   { path: '', component: MainOfferPageComponent },
   { path: 'post-offer', component: PostOfferComponent },
   { path: 'post-offer-form', component: PostOfferFormComponent, canActivate: [AuthGuard] },
+  { path: 'post-offer-form/verify', component: VerifyOfferComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginPageComponent },
+  { path: 'offer-details', component: OfferDetailsComponent, outlet: 'details' },
+  { path: '', component: OffersContentComponent, outlet: 'details' }
 ];
 
 @NgModule({
@@ -43,6 +48,8 @@ const appRoutes: Routes = [
     PricingComponent,
     PostOfferFormComponent,
     LoginPageComponent,
+    OfferDetailsComponent,
+    VerifyOfferComponent,
   ],
   imports: [
     BrowserModule,

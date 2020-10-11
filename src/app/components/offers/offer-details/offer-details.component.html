@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="detailsBox" [ngStyle]="{ 'background-color': findTechColor(currentOffer.mainTech) }">
+    <a (click)="unloadOffer()" class="backButton">
+      <mat-icon>keyboard_backspace</mat-icon>
+    </a>
+    <div class="wrapper">
+      <div class="border1">
+        <div class="border2">
+          <div class="border3">
+            <img src="data:image/png;base64,{{ currentOffer.logo }}" class="image"/>
+          </div>
+        </div>
+      </div>
+      <div class="offerDetails">
+        <span class="salary">{{salaryStyling(currentOffer.salary, currentOffer.currency)}}</span>
+        <span class="position">{{currentOffer.position}}</span>
+        <span class="city">{{currentOffer.street + ', ' + currentOffer.city}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="companyDetails">
+    <div class="box" *ngFor="let box of boxes">
+      <div class="icon" [ngStyle]="{ 'color': box.iconColor }">
+        <mat-icon>{{box.icon}}</mat-icon>
+      </div>
+      <div class="label">
+        <a *ngIf="box.link" href="{{box.link}}" class="link">{{box.link}}</a>
+        <span *ngIf="!box.link">{{box.label}}</span>
+      </div>
+      <div class="info">
+        <span>{{box.info}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="description">
+    <div class="header">Description</div>
+    <div class="descriptionContent">{{currentOffer.description}}</div>
+  </div>
+</div>

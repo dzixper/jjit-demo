@@ -1,0 +1,9 @@
+<mat-horizontal-stepper linear class="fixedWidth" #stepper>
+  <mat-step color="accent" *ngFor="let label of stepperLabels">
+    <ng-template matStepLabel>
+      <div [ngClass]="{ active: label == 'Verify' }">{{ label }}</div>
+    </ng-template>
+  </mat-step>
+</mat-horizontal-stepper>
+<app-offer-details class="fixedWidth"></app-offer-details>
+<button mat-flat-button (click)="sendOffer()" color="accent">Send offer</button>

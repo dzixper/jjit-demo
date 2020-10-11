@@ -1,10 +1,21 @@
 export interface Offer {
-  position: string;
-  company: string;
-  location: string;
-  remote: boolean;
-  salary?: [number, number];
-  currency?: string;
-  tags: Array<string> | string;
-  timePosted: Date;
+  logo: string //Base64
+  company: string,
+  website: string,
+  companySize: number,
+  companyType: string,
+  industry: string,
+  position: string,
+  experience: string,
+  contract: string,
+  salary: [number, number], // [min, max]
+  currency: string,
+  // techStack TODO
+  description: string,
+  city: string,
+  street: string,
+  lonLat: [number, number], // [lon, lat]
+  applyDestination: string,
+  mainTech: string,
+  timePosted: Date
 }

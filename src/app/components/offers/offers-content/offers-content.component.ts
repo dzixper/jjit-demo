@@ -9,6 +9,7 @@ import {
 import { Offer } from '../../../shared/models/offer.model';
 import { OffersService } from '../../../services/offers.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TECHNOLOGIES } from '../../../shared/technologies';
 
 @Component({
   selector: 'app-offers-content',
@@ -21,6 +22,7 @@ export class OffersContentComponent implements OnChanges, OnInit, OnDestroy {
   allOffers = [];
   @Input() selectedOption: string;
   subscriptionHandler: any;
+  canShowDetails = false;
 
   constructor(
     private offersService: OffersService,
@@ -40,12 +42,22 @@ export class OffersContentComponent implements OnChanges, OnInit, OnDestroy {
     this.subscriptionHandler = this.router.events.subscribe(() => {
       if (this.route.snapshot.queryParams['tab'] === 'with-salary') {
         this.offers = this.allOffers.filter(
-          (offer) => offer.salary[0] !== undefined
+          (offer) => offer.salary[0] !== null
         );
       } else {
         this.offers = this.allOffers;
       }
     });
+  }
+
+  findTechColor(tech: string): string {
+    return TECHNOLOGIES.find(x => x.name.toLowerCase() === tech.toLowerCase()).color;
+  }
+
+  showDetails(offer: Offer): void {
+    console.log(offer);
+    this.offersService.setPassOffer(offer);
+    this.canShowDetails = true;
   }
 
   ngOnDestroy(): void {
@@ -76,6 +88,9 @@ export class OffersContentComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   salaryStyling(salary: [number, number], currency: string): string {
+    if (salary[0] === (undefined || null) || salary[1] === (undefined || null) || currency === undefined) {
+      return 'Undisclosed salary';
+    }
     return (salary[0] + ' - ' + salary[1] + ' ' + currency).replace(
       /([0-9]{3} )/g,
       ' $1'
@@ -88,10 +103,10 @@ export class OffersContentComponent implements OnChanges, OnInit, OnDestroy {
         case 'latest':
           return a.timePosted < b.timePosted ? 1 : -1;
         case 'lowest salary':
-          if (a.salary[0] === undefined) {
+          if (a.salary[0] === null) {
             return 1;
           }
-          if (b.salary[0] === undefined) {
+          if (b.salary[0] === null) {
             return -1;
           }
           return a.salary[0] > b.salary[0]
@@ -100,10 +115,10 @@ export class OffersContentComponent implements OnChanges, OnInit, OnDestroy {
             ? 0
             : -1;
         case 'highest salary':
-          if (a.salary[0] === undefined) {
+          if (a.salary[0] === null) {
             return 1;
           }
-          if (b.salary[0] === undefined) {
+          if (b.salary[0] === null) {
             return -1;
           }
           return a.salary[0] > b.salary[0]
