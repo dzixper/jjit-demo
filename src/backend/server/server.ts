@@ -20,8 +20,8 @@ app.use('/api', api);
 // HEROKU SECTION
 
 const path = require('path');
-app.use(express.static(__dirname + '/dist/DEOM'));
-app.get('/*', (req: express.Request, res: express.Response) => res.sendFile(path.join(__dirname + '/dist/DEOM/index.html')));
+app.use(express.static('/app/dist/DEOM'));
+app.get('/*', (req: express.Request, res: express.Response) => res.sendFile('/app/dist/DEOM/index.html'));
 
 // HEROKU
 
