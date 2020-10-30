@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "start": "cd src/backend/server && npm start"
+    "start": "cd src/backend/server && npm install && npm start"
   },
   "private": true,
   "dependencies": {
