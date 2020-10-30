@@ -19,8 +19,8 @@ app.use('/api', api);
 
 // HEROKU SECTION
 
-app.use(express.static('../../dist/DEOM'));
-app.get('/*', (req: express.Request, res: express.Response) => res.sendFile('index.html', {root: '../../dist/DEOM/'}));
+app.use(express.static('../../../dist/DEOM'));
+app.get('/*', (req: express.Request, res: express.Response) => res.sendFile('index.html', {root: '../../../dist/DEOM/'}));
 
 // HEROKU
 
