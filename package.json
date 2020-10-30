@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start__": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "heroku-postbuild": "npm install && ng build && cd src/backend && npm install && cd server && npm start"
+    "heroku-prebuild": "npm install && ng build && cd src/backend && npm install",
+    "start": "cd src/backend/server && npm start"
   },
   "private": true,
   "dependencies": {
