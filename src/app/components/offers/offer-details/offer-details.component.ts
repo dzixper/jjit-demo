@@ -34,6 +34,8 @@ export class OfferDetailsComponent implements OnInit {
     this.offersService.isOfferLoaded = false;
     if (this.router.url === '/post-offer-form/verify') {
       this.router.navigateByUrl('/post-offer-form');
+    } else {
+      this.router.navigate([]);
     }
   }
 

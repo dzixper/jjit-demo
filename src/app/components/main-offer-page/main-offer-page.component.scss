@@ -75,3 +75,9 @@
   height: 100%;
   overflow: auto;
 }
+
+@media only screen and (max-width: 900px) {
+  .map-section {
+    display: none;
+  }
+}

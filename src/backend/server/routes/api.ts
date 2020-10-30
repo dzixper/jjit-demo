@@ -1,15 +1,16 @@
-const express = require('express');
+import * as express from 'express';
+import { Offer } from '../../../app/shared/models/offer.model';
 const router = express.Router();
 const User = require('../models/user');
 const Offer = require('../models/offer');
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
-import Request = require('express');
 
-const db = 'tutaj-jest-link';
-const secretKey = 'tutaj-jest-kod';
 
-mongoose.connect(db, {useNewUrlParser : true, useUnifiedTopology: true}, (err) => {
+const db = 'mongodb+srv://userjjit:jjit@jjitdb.jxuqq.mongodb.net/jjitdb?retryWrites=true&w=majority';
+const secretKey = 'a7201b9c4a6d45d193d794460bb25bd691e655dec874def168d29c4f6089781b538eb8c080f2d3fba5f4a51b0bace09e';
+
+mongoose.connect(db, {useNewUrlParser : true, useUnifiedTopology: true}, (err: express.ErrorRequestHandler) => {
   if (err) {
     console.error('Error!' + err);
   } else {
@@ -17,7 +18,7 @@ mongoose.connect(db, {useNewUrlParser : true, useUnifiedTopology: true}, (err) =
   }
 });
 
-function verifyToken(req, res, next) {
+function verifyToken(req: express.Request, res: express.Response, next: express.NextFunction): express.Response | void {
   if (!req.headers.authorization) {
     return res.status(401).send('Unauthorized request');
   }
@@ -27,17 +28,17 @@ function verifyToken(req, res, next) {
   }
   try {
     const payload = jwt.verify(token, secretKey);
-    req.userId = payload.subject;
+    req.params.userId = payload.subject;
     next();
   } catch (err) {
     return res.status(401).send('Unauthorized request');
   }
 }
 
-router.post('/post-offer-form', (req, res) => {
+router.post('/post-offer-form', (req: express.Request, res: express.Response) => {
   const offerData = req.body;
   const offer = new Offer(offerData);
-  offer.save((err) => {
+  offer.save((err: express.ErrorRequestHandler) => {
     if (err) {
       console.log(err);
     } else {
@@ -46,10 +47,10 @@ router.post('/post-offer-form', (req, res) => {
   });
 });
 
-router.post('/register', (req, res) => {
+router.post('/register', (req: express.Request, res: express.Response) => {
   const userData = req.body;
   const user = new User(userData);
-  user.save((err, registeredUser) => {
+  user.save((err: express.ErrorRequestHandler, registeredUser: {_id: string}) => {
     if (err) {
       console.log(err);
     } else {
@@ -61,9 +62,9 @@ router.post('/register', (req, res) => {
   });
 });
 
-router.post('/login', (req, res) => {
+router.post('/login', (req: express.Request, res: express.Response) => {
   const userData = req.body;
-  User.findOne({ email: userData.email }, (err, user) => {
+  User.findOne({ email: userData.email }, (err: express.ErrorRequestHandler, user: {email: string, password: string, _id: string}) => {
     if (err) {
       console.log(err);
     } else {
@@ -86,7 +87,7 @@ router.get('/post-offer-form', verifyToken, (req, res) => {
 });
 
 router.get('/offers', (req, res) => {
-  Offer.find({}, (result, err) => {
+  Offer.find({}, (result: Offer, err: express.ErrorRequestHandler) => {
     if (err) {
       res.send(err);
     } else {

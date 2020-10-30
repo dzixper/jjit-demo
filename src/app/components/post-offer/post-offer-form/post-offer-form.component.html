@@ -118,11 +118,25 @@
         <div class="column">
           <mat-form-field>
             <mat-label>Select technology or write a new one</mat-label>
-            <input matInput/>
+            <input (keydown.enter)="addTag($event.target.value)" matInput [(ngModel)]="tag" [ngModelOptions]="{standalone: true}" />
           </mat-form-field>
         </div>
+        <div class="column">
+          <span *ngIf="tags.length >= 10" class="label">(max 10)</span>
+        </div>
         <div class="column"></div>
-        <div class="column"></div>
+      </div>
+      <div class="tagRow">
+        <div class="tag" *ngFor="let tag of tags; let i = index">
+          <div class="wrap">
+            <app-dot-level [level]="tag.skill" (levelChanged)="tag.skill = $event"></app-dot-level>
+            <div class="tagContent">
+              <div>{{tag.content}}</div>
+              <div class="deleteTag" (click)="tags.splice(i, 1)"><mat-icon>clear</mat-icon></div>
+            </div>
+            <div class="label">{{skillDescription(tag.skill)}}</div>
+          </div>
+        </div>
       </div>
       <div class="row">
         <div class="column">
@@ -162,8 +176,8 @@
               <div
                 class="technology"
                 *ngFor="let technology of technologies; let i = index">
-                <button mat-mini-fab id="button{{ i }}" class="mat-elevation-z0" type="button" (click)="setTech(technology.name, technology.color)" *ngIf="technology.name !== 'All'">
-                  <img src="{{technology.icon}}" class="icons"/>
+                <button mat-mini-fab id="button{{ i }}" class="mat-elevation-z0" type="button" (click)="setTech(technology.name, technology.color, i)" *ngIf="technology.name !== 'All'">
+                  <img alt="{{technology.name}}" src="{{technology.icon}}" class="icons"/>
                 </button>
                 <span *ngIf="technology.name !== 'All'">{{ technology.name }}</span>
               </div>
@@ -190,7 +204,7 @@ Informujemy, że administratorem danych jest _______ z siedzibą w _______, ul. 
           <mat-checkbox><span class="label">Display consent for future recruitment</span></mat-checkbox>
           <span class="label">Processing data in future recruitment</span>
           <textarea
-            disabled>Wyrażam zgodę na student piwo dla celów przyszłych rekrutacji.</textarea>
+            disabled>Wyrażam zgodę na sialala dla celów przyszłych rekrutacji.</textarea>
           <mat-checkbox><span class="label">Display your custom consent</span></mat-checkbox>
         </div>
       </div>
@@ -204,7 +218,7 @@ Informujemy, że administratorem danych jest _______ z siedzibą w _______, ul. 
         </div>
       </div>
       <div class="row">
-        <button mat-flat-button color="accent" type="submit" routerLink="verify" [disabled]="!offerForm.valid || !tech || !image">Next step</button>
+        <button mat-flat-button color="accent" type="submit" routerLink="verify" [disabled]="!offerForm.valid || !tech || !image || !tags">Next step</button>
       </div>
     </mat-card>
   </div>

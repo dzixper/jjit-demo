@@ -1,0 +1,1 @@
+<div class="dot" *ngFor="let level of levels; let i = index" (click)="updateDots(i+1)" [ngClass]="level.active ? 'active' : 'inactive'"></div>

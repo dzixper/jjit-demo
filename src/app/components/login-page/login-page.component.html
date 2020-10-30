@@ -3,6 +3,9 @@
     <div class="logo">
       <img src="assets/logo.png" alt="logo" class="logo">
     </div>
+    <div class="alert" *ngIf="alert.show" [ngStyle]="{'background-color' : alert.color}">
+      {{alert.text}}
+    </div>
     <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm.value)">
       <div class="input-field">
         <mat-icon>email</mat-icon>

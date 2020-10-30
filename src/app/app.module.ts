@@ -22,6 +22,8 @@ import { AuthGuard } from './services/auth.guard';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { OfferDetailsComponent } from './components/offers/offer-details/offer-details.component';
 import { VerifyOfferComponent } from './components/post-offer/post-offer-form/verify-offer/verify-offer.component';
+import { CookieService } from 'ngx-cookie-service';
+import { DotLevelComponent } from './components/dot-level/dot-level.component';
 
 
 const appRoutes: Routes = [
@@ -50,6 +52,7 @@ const appRoutes: Routes = [
     LoginPageComponent,
     OfferDetailsComponent,
     VerifyOfferComponent,
+    DotLevelComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,7 +66,7 @@ const appRoutes: Routes = [
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi: true
-  }],
+  }, CookieService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

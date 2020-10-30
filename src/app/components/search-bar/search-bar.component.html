@@ -48,11 +48,11 @@
       </div>
       <div class="technologies">
         <div
-          class="technology"
+          class="technology techbar"
           *ngFor="let technology of technologies; let i = index"
         >
-          <button mat-mini-fab id="button{{ i }}" class="mat-elevation-z0">
-            <img *ngIf="technology.icon" src="{{technology.icon}}" class="icons"/>
+          <button mat-mini-fab id="button{{ i }}" class="mat-elevation-z0" (click)="onTechnologyButtonClick(technology.name.toLowerCase(), i)">
+            <img alt="{{technology.name}}" *ngIf="technology.icon" src="{{technology.icon}}" class="icons"/>
             <span *ngIf="!technology.icon">All</span>
           </button>
           <span>{{ technology.name }}</span>
@@ -60,11 +60,16 @@
         <div class="mat-elevation-z0 more-technologies technology" id="more-technologies" [matMenuTriggerFor]="techmenu">
           <mat-icon>more_horiz</mat-icon>
         </div>
-        <mat-menu #techmenu="matMenu">
-          <button mat-menu-item>
-            <mat-icon>dialpad</mat-icon>
-            <span>Redial</span>
-          </button>
+        <mat-menu #techmenu="matMenu" class="dotbar">
+         <div mat-menu-item class="technology dotbar"
+              *ngFor="let technology of technologies; let i = index"
+              (click)="onTechnologyButtonClick(technology.name.toLowerCase(), i)">
+           <button mat-mini-fab id="button{{ i }}" class="mat-elevation-z0">
+             <img alt="{{technology.name}}" *ngIf="technology.icon" src="{{technology.icon}}" class="icons"/>
+             <span *ngIf="!technology.icon">All</span>
+           </button>
+           <span>{{ technology.name }}</span>
+         </div>
         </mat-menu>
         <span></span>
       </div>

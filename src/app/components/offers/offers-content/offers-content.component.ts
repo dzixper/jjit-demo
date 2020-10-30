@@ -10,6 +10,7 @@ import { Offer } from '../../../shared/models/offer.model';
 import { OffersService } from '../../../services/offers.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TECHNOLOGIES } from '../../../shared/technologies';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-offers-content',
@@ -21,7 +22,7 @@ export class OffersContentComponent implements OnChanges, OnInit, OnDestroy {
   offers = [];
   allOffers = [];
   @Input() selectedOption: string;
-  subscriptionHandler: any;
+  subscriptionHandler: Subscription;
   canShowDetails = false;
 
   constructor(
@@ -31,7 +32,7 @@ export class OffersContentComponent implements OnChanges, OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.offersService.getOffers().subscribe(
+    this.offersService.getOffers().then(
       (res) => {
         this.allOffers = res;
         this.offers = res;
@@ -40,12 +41,15 @@ export class OffersContentComponent implements OnChanges, OnInit, OnDestroy {
       (err) => console.log(err)
     );
     this.subscriptionHandler = this.router.events.subscribe(() => {
-      if (this.route.snapshot.queryParams['tab'] === 'with-salary') {
+      if (this.route.snapshot.queryParams.tab === 'with-salary') {
         this.offers = this.allOffers.filter(
           (offer) => offer.salary[0] !== null
         );
       } else {
         this.offers = this.allOffers;
+      }
+      if (this.route.snapshot.queryParams.technology !== undefined) {
+        this.offers = this.offers.filter(offer => offer.mainTech.toLowerCase() === this.route.snapshot.queryParams.technology);
       }
     });
   }
@@ -55,7 +59,6 @@ export class OffersContentComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   showDetails(offer: Offer): void {
-    console.log(offer);
     this.offersService.setPassOffer(offer);
     this.canShowDetails = true;
   }

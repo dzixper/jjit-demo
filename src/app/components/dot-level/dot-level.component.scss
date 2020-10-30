@@ -1,0 +1,23 @@
+:host {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 5px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  &:hover {
+    background-color: #9c27b0;
+    cursor: pointer;
+  }
+}
+
+.active {
+  background-color: #ff4081;
+}
+
+.inactive {
+  background-color: #c7ced6;
+}

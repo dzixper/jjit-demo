@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   constructor(private sidenavService: SidenavService, public router: Router) {
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.sidenavService.setSidenav(this.sidenav);
   }
 

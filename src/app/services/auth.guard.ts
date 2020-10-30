@@ -13,7 +13,6 @@ export class AuthGuard implements CanActivate {
     if (this.authService.isLoggedIn()) { // && this.authService.isTokenVerified()
       try {
         const result = await this.authService.isTokenVerified();
-        console.log(result);
         return result.valid;
       } catch (e) {
         console.log(e);
