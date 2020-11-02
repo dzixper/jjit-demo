@@ -8,8 +8,9 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class OffersService {
-  private _offersUrl = 'http://localhost:3000/api/offers';
-  private _postFormUrl = 'http://localhost:3000/api/post-offer-form';
+  private PORT = 8080;
+  private _offersUrl = `http://localhost:${this.PORT}/api/offers`;
+  private _postFormUrl = `http://localhost:${this.PORT}/api/post-offer-form`;
   private passedOffer: Offer;
   isOfferLoaded = false;
   parsedOffers: Array<Offer>;

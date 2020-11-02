@@ -1,11 +1,12 @@
-import { Component, Input, Output, EventEmitter, AfterViewInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dot-level',
   templateUrl: './dot-level.component.html',
   styleUrls: ['./dot-level.component.scss'],
 })
-export class DotLevelComponent implements AfterViewInit {
+export class DotLevelComponent implements OnInit {
   @Input() level: number;
   @Output() levelChanged = new EventEmitter();
   levels = [
@@ -16,16 +17,22 @@ export class DotLevelComponent implements AfterViewInit {
     {number: 5, active: true}
   ];
 
-  constructor() {}
+  constructor(private router: Router) {}
 
-  ngAfterViewInit(): void {
-    this.updateDots(this.level);
+
+  ngOnInit(): void {
+    for (let i = 0; i <= 4; i++) {
+      this.levels[i].active = i < this.level;
+    }
   }
 
   updateDots(level: number): void {
-    for (let i = 0; i <= 4; i++) {
-      this.levels[i].active = i < level;
+    if (this.router.url === '/post-offer-form') {
+      for (let i = 0; i <= 4; i++) {
+        this.levels[i].active = i < level;
+      }
+      this.levelChanged.emit(level);
     }
-    this.levelChanged.emit(level);
   }
+
 }

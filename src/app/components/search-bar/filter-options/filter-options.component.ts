@@ -21,7 +21,7 @@ export class FilterOptionsComponent implements OnInit {
   }
 
   makeButtonSelected(input): void {
-    for(const level of this.levels) {
+    for (const level of this.levels) {
       level.isActive = false;
     }
     input.isActive = true;

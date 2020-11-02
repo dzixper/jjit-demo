@@ -9,8 +9,8 @@ import {
 import { Offer } from '../../../shared/models/offer.model';
 import { OffersService } from '../../../services/offers.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TECHNOLOGIES } from '../../../shared/technologies';
 import { Subscription } from 'rxjs';
+import { salaryStyling, isNew, dateStyling, findTechColor} from '../../../utils/shared-functions';
 
 @Component({
   selector: 'app-offers-content',
@@ -18,7 +18,6 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./offers-content.component.scss'],
 })
 export class OffersContentComponent implements OnChanges, OnInit, OnDestroy {
-  today = new Date();
   offers = [];
   allOffers = [];
   @Input() selectedOption: string;
@@ -54,10 +53,6 @@ export class OffersContentComponent implements OnChanges, OnInit, OnDestroy {
     });
   }
 
-  findTechColor(tech: string): string {
-    return TECHNOLOGIES.find(x => x.name.toLowerCase() === tech.toLowerCase()).color;
-  }
-
   showDetails(offer: Offer): void {
     this.offersService.setPassOffer(offer);
     this.canShowDetails = true;
@@ -75,31 +70,6 @@ export class OffersContentComponent implements OnChanges, OnInit, OnDestroy {
     return new Date(date);
   }
 
-  dateStyling(date: Date): string {
-    return this.isNew(date) ? 'New' : this.offerDaysAfterPosted(date) + 'd ago';
-  }
-
-  offerDaysAfterPosted(date: Date): number {
-    date = new Date(date);
-    return Math.floor(
-      (this.today.getTime() - date.getTime()) / (1000 * 3600 * 24)
-    );
-  }
-
-  isNew(date: Date): boolean {
-    return this.offerDaysAfterPosted(date) <= 1;
-  }
-
-  salaryStyling(salary: [number, number], currency: string): string {
-    if (salary[0] === (undefined || null) || salary[1] === (undefined || null) || currency === undefined) {
-      return 'Undisclosed salary';
-    }
-    return (salary[0] + ' - ' + salary[1] + ' ' + currency).replace(
-      /([0-9]{3} )/g,
-      ' $1'
-    );
-  }
-
   sortOffers(prop: string, offers: Array<Offer>): void {
     offers.sort((a, b) => {
       switch (prop) {
@@ -112,11 +82,7 @@ export class OffersContentComponent implements OnChanges, OnInit, OnDestroy {
           if (b.salary[0] === null) {
             return -1;
           }
-          return a.salary[0] > b.salary[0]
-            ? 1
-            : a.salary[0] === b.salary[0]
-            ? 0
-            : -1;
+          return a.salary[0] > b.salary[0] ? 1 : a.salary[0] === b.salary[0] ? 0 : -1;
         case 'highest salary':
           if (a.salary[0] === null) {
             return 1;
@@ -124,12 +90,22 @@ export class OffersContentComponent implements OnChanges, OnInit, OnDestroy {
           if (b.salary[0] === null) {
             return -1;
           }
-          return a.salary[0] > b.salary[0]
-            ? -1
-            : a.salary[0] === b.salary[0]
-            ? 0
-            : 1;
+          return a.salary[0] > b.salary[0] ? -1 : a.salary[0] === b.salary[0] ? 0 : 1;
       }
     });
   }
+
+  findTechColor(mainTech: string): string {
+    return findTechColor(mainTech);
+  }
+  salaryStyling(salary: [number, number], currency: string): string {
+    return salaryStyling(salary, currency);
+  }
+  isNew(date: Date): boolean {
+    return isNew(date);
+  }
+  dateStyling(date: Date): string {
+    return dateStyling(date);
+  }
+
 }

@@ -9,6 +9,7 @@ import { OffersService } from '../../services/offers.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TECHNOLOGIES } from '../../shared/technologies';
 import { Subscription } from 'rxjs';
+import { weirdTechLabels } from '../../utils/shared-functions';
 
 declare const mapboxgl: any;
 
@@ -93,28 +94,13 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     this.changeTemporaryMarkerLocation(this.defaultLocation);
   }
 
-  weirdTechLabels(tech: string): string {
-    // TODO XD przepraszam
-    tech = tech.toLowerCase();
-    switch (tech) {
-      case '.net':
-        return 'net';
-      case 'ux/ui':
-        return 'ux';
-      default:
-        return tech;
-    }
-  }
-
   changeMarkerStyle(marker: any, color: string, tech: string): void {
     // TODO marker: documentHTML
     marker.style.backgroundColor = color;
     marker.style.boxShadow = `${marker.style.backgroundColor
       .replace(')', ', 0.25)')
       .replace('rgb', 'rgba')} 0 0 0 5px`;
-    marker.style.backgroundImage = `url(assets/technologies/${this.weirdTechLabels(
-      tech
-    )}.svg)`;
+    marker.style.backgroundImage = `url(assets/technologies/${weirdTechLabels(tech)}.svg)`;
   }
 
   createMap(): Promise<any> {

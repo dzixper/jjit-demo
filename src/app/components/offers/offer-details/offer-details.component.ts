@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { OffersService } from '../../../services/offers.service';
-import { TECHNOLOGIES } from '../../../shared/technologies';
 import { Router } from '@angular/router';
+import { dateStyling, salaryStyling, findTechColor, skillDescription } from '../../../utils/shared-functions';
+import { Offer } from '../../../shared/models/offer.model';
 
 @Component({
   selector: 'app-offer-details',
@@ -9,9 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./offer-details.component.scss']
 })
 export class OfferDetailsComponent implements OnInit {
-  currentOffer: any;
+  currentOffer: Offer;
   boxes = [];
-  today = new Date();
 
   constructor(private offersService: OffersService, private router: Router) { }
 
@@ -22,12 +22,8 @@ export class OfferDetailsComponent implements OnInit {
       {icon: 'people', iconColor: 'rgb(251, 140, 0)', label: this.currentOffer.companySize, info: 'Company size'},
       {icon: 'request_page', iconColor: 'rgb(171, 71, 188)', label: this.currentOffer.contract, info: 'EMP. type'},
       {icon: 'show_chart', iconColor: 'rgb(102, 187, 106)', label: this.currentOffer.experience, info: 'EXP. lvl'},
-      {icon: 'timelapse', iconColor: 'rgb(68, 138, 255)', label: this.dateStyling(this.currentOffer.timePosted), info: 'Added'},
+      {icon: 'timelapse', iconColor: 'rgb(68, 138, 255)', label: dateStyling(this.currentOffer.timePosted), info: 'Added'},
     ];
-  }
-
-  findTechColor(tech: string): string {
-    return TECHNOLOGIES.find(x => x.name.toLowerCase() === tech.toLowerCase()).color;
   }
 
   unloadOffer(): void {
@@ -39,29 +35,17 @@ export class OfferDetailsComponent implements OnInit {
     }
   }
 
-  dateStyling(date: Date): string {
-    return this.isNew(date) ? 'New' : this.offerDaysAfterPosted(date) + 'd ago';
-  }
-
-  offerDaysAfterPosted(date: Date): number {
-    date = new Date(date);
-    return Math.floor(
-      (this.today.getTime() - date.getTime()) / (1000 * 3600 * 24)
-    );
-  }
-
-  isNew(date: Date): boolean {
-    return this.offerDaysAfterPosted(date) <= 1;
-  }
-
   salaryStyling(salary: [number, number], currency: string): string {
-    if (salary[0] === (undefined || null) || salary[1] === (undefined || null) || currency === (undefined || null)) {
-      return 'Undisclosed salary';
-    }
-    return (salary[0] + ' - ' + salary[1] + ' ' + currency).replace(
-      /([0-9]{3} )/g,
-      ' $1'
-    ).concat(' net/month');
+    return salaryStyling(salary, currency).concat(' net/month');
+  }
+  findTechColor(tech: string): string {
+    return findTechColor(tech);
+  }
+  dateStyling(date: Date): string {
+    return dateStyling(date);
   }
 
+  skillDescription(level: number) {
+    return skillDescription(level);
+  }
 }

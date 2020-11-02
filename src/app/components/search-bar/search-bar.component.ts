@@ -7,7 +7,7 @@ import { Technology } from '../../shared/models/technology.model';
 import { Location } from '../../shared/models/location.model';
 import { MatMenu } from '@angular/material/menu';
 import { Router } from '@angular/router';
-
+import { convertEveryTechnologyToGrayscale } from '../../utils/shared-functions';
 
 @Component({
   selector: 'app-search-bar',
@@ -32,40 +32,24 @@ export class SearchBarComponent implements AfterViewInit {
     // });
   }
 
-
   ngAfterViewInit(): void {
     const mq = window.matchMedia('(max-width: 1600px)');
 
     if (mq.matches) {
-
     } else {
-
     }
   }
 
   onTechnologyButtonClick(techName: string, id: number): void {
     this.setQueryParameter(techName);
-    this.convertEveryTechnologyToGrayscale(id);
+    convertEveryTechnologyToGrayscale(id);
   }
 
   setQueryParameter(techName: string): void {
     if (techName === 'all') {
       this.router.navigate([]);
     } else {
-      this.router.navigate([], {queryParams: {technology: techName}});
-    }
-  }
-
-  convertEveryTechnologyToGrayscale(id: number): void {
-    for (let i = 0; i < document.querySelectorAll('.technology').length - 1; i++) {
-      const button = document.getElementById('button' + i);
-      if (id === i) {
-        button.style.filter = 'grayscale(0%)';
-      } else if (id === 0) {
-        button.style.filter = 'grayscale(0%)';
-      } else {
-        button.style.filter = 'grayscale(100%)';
-      }
+      this.router.navigate([], { queryParams: { technology: techName } });
     }
   }
 }

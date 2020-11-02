@@ -5,7 +5,7 @@
     </ng-template>
   </mat-step>
 </mat-horizontal-stepper>
-<form #offerForm="ngForm" (ngSubmit)="onSubmit(offerForm.value)">
+<form #offerForm="ngForm" (ngSubmit)="onSubmit(offerForm.value)" (keydown.enter)="$event.preventDefault()">
   <div class="container">
     <mat-card class="mat-elevation-z0">
       <div class="row">
@@ -129,12 +129,12 @@
       <div class="tagRow">
         <div class="tag" *ngFor="let tag of tags; let i = index">
           <div class="wrap">
-            <app-dot-level [level]="tag.skill" (levelChanged)="tag.skill = $event"></app-dot-level>
+            <app-dot-level [level]="tag.level" (levelChanged)="tag.level = $event"></app-dot-level>
             <div class="tagContent">
-              <div>{{tag.content}}</div>
+              <div>{{tag.stack}}</div>
               <div class="deleteTag" (click)="tags.splice(i, 1)"><mat-icon>clear</mat-icon></div>
             </div>
-            <div class="label">{{skillDescription(tag.skill)}}</div>
+            <div class="label">{{skillDescription(tag.level)}}</div>
           </div>
         </div>
       </div>
@@ -218,7 +218,8 @@ Informujemy, że administratorem danych jest _______ z siedzibą w _______, ul. 
         </div>
       </div>
       <div class="row">
-        <button mat-flat-button color="accent" type="submit" routerLink="verify" [disabled]="!offerForm.valid || !tech || !image || !tags">Next step</button>
+        <button mat-flat-button color="accent" type="submit" routerLink="verify">Next step</button>
+<!--        [disabled]="!offerForm.valid || !tech || !image || !tags"-->
       </div>
     </mat-card>
   </div>

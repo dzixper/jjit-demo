@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatStepper } from '@angular/material/stepper';
 import { OffersService } from '../../../../services/offers.service';
 import { Router } from '@angular/router';

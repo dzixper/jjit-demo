@@ -82,11 +82,11 @@ router.post('/login', (req: express.Request, res: express.Response) => {
   });
 });
 
-router.get('/post-offer-form', verifyToken, (req, res) => {
+router.get('/post-offer-form', verifyToken, (req: express.Request, res: express.Response) => {
   res.send({valid: true});
 });
 
-router.get('/offers', (req, res) => {
+router.get('/offers', (req: express.Request, res: express.Response) => {
   Offer.find({}, (result: Offer, err: express.ErrorRequestHandler) => {
     if (err) {
       res.send(err);

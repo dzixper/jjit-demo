@@ -4,6 +4,9 @@ import { TECHNOLOGIES } from '../../../shared/technologies';
 import { MapComponent } from '../../map/map.component';
 import { Offer } from '../../../shared/models/offer.model';
 import { OffersService } from '../../../services/offers.service';
+import { Router } from '@angular/router';
+import { convertEveryTechnologyToGrayscale, weirdTechLabels } from '../../../utils/shared-functions';
+import {skillDescription} from '../../../utils/shared-functions';
 
 @Component({
   selector: 'app-post-offer-form',
@@ -31,7 +34,7 @@ export class PostOfferFormComponent implements OnInit {
 
   @ViewChild(MapComponent) worldMap: MapComponent;
 
-  constructor(private offersService: OffersService) { }
+  constructor(private offersService: OffersService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -41,7 +44,7 @@ export class PostOfferFormComponent implements OnInit {
 
     } else {
       this.tag = '';
-      this.tags.push({content: tag, skill: 3});
+      this.tags.push({stack: tag, level: 3});
     }
   }
 
@@ -52,37 +55,17 @@ export class PostOfferFormComponent implements OnInit {
   }
 
   setTech(tech: string, color: string, id: number): void {
-    this.convertEveryTechnologyToGrayscale(id);
+    convertEveryTechnologyToGrayscale(id);
     this.tech = tech;
-    this.worldMap.tempMarker.style.backgroundImage = `url(assets/technologies/${this.weirdTechLabels(tech)}.svg)`;
+    this.worldMap.tempMarker.style.backgroundImage = `url(assets/technologies/${weirdTechLabels(tech)}.svg)`;
     this.worldMap.tempMarker.style.backgroundColor = `${color}`;
     this.worldMap.tempMarker.style.boxShadow = `${this.worldMap.tempMarker.style.backgroundColor.replace(')', ', 0.25)').replace('rgb', 'rgba')} 0 0 0 5px`;
-  }
-
-  weirdTechLabels(tech: string): string { // TODO XD przepraszam
-    tech = tech.toLowerCase();
-    switch (tech) {
-      case '.net': return 'net';
-      case 'ux/ui': return 'ux';
-      default: return tech;
-    }
   }
 
   onSubmit(offerBody: Offer): void {
     this.preparedBody = this.prepareToSubmit(offerBody);
     this.offersService.setPassOffer(this.preparedBody);
-    // this.router.navigateByUrl('/post-offer-form/verify');
-  }
-
-  convertEveryTechnologyToGrayscale(id: number): void {
-    for (let i = 1; i < document.querySelectorAll('.technology').length; i++) {
-      const button = document.getElementById('button' + i);
-      if (id === i) {
-        button.style.filter = 'grayscale(0%)';
-      } else {
-        button.style.filter = 'grayscale(100%)';
-      }
-    }
+    this.router.navigateByUrl('/post-offer-form/verify');
   }
 
   checkSalary(salaryLow: number, salaryHigh: number, currency: string): Array<any> {
@@ -120,14 +103,7 @@ export class PostOfferFormComponent implements OnInit {
   }
 
   skillDescription(skill: number): string {
-    switch (skill) {
-      case 1: return 'Nice to have';
-      case 2: return 'Junior';
-      case 3: return 'Regular';
-      case 4: return 'Advanced';
-      case 5: return 'Master';
-    }
+    return skillDescription(skill);
   }
-
 
 }

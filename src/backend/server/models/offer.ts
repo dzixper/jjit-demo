@@ -1,7 +1,12 @@
 const mongoose = require('mongoose');
 
+const tagSchema = new mongoose.Schema({
+  stack: String,
+  level: Number
+});
+
 const offerSchema = new mongoose.Schema({
-  logo: String, //Base64
+  logo: String, // Base64
   company: String,
   website: String,
   companySize: Number,
@@ -19,7 +24,7 @@ const offerSchema = new mongoose.Schema({
   applyDestination: String,
   mainTech: String,
   timePosted: Date,
-  tags: [String],
+  tags: [tagSchema],
 });
 
 module.exports = mongoose.model('offer', offerSchema, 'offers');

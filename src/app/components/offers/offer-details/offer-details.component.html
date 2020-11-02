@@ -7,7 +7,7 @@
       <div class="border1">
         <div class="border2">
           <div class="border3">
-            <img src="data:image/png;base64,{{ currentOffer.logo }}" class="image"/>
+            <img alt="{{currentOffer.company}}" src="data:image/png;base64,{{ currentOffer.logo }}" class="image"/>
           </div>
         </div>
       </div>
@@ -32,6 +32,22 @@
       </div>
     </div>
   </div>
+
+  <div class="description">
+    <div class="header">Tech stack</div>
+      <div class="tagRow">
+        <div class="tag" *ngFor="let tag of currentOffer.tags; let i = index">
+          <div class="wrap">
+            <app-dot-level [level]="tag.level"></app-dot-level>
+            <div class="tagContent">
+              <div>{{tag.stack}}</div>
+            </div>
+            <div class="label">{{skillDescription(tag.level)}}</div>
+          </div>
+        </div>
+      </div>
+  </div>
+
 
   <div class="description">
     <div class="header">Description</div>

@@ -1,7 +1,7 @@
 <a (click)=showDetails(offer) *ngFor="let offer of offers" class="mat-card offer-card-salary" [ngStyle]="{'border-left-color': findTechColor(offer.mainTech)}">
   <div class="content">
     <div class="image-container">
-      <img src="data:image/png;base64,{{ offer.logo }}" class="image"/>
+      <img alt="{{offer.company}}" src="data:image/png;base64,{{ offer.logo }}" class="image"/>
     </div>
     <div class="info">
       <div class="head">
@@ -27,8 +27,8 @@
           </div>
         </div>
         <div class="tags">
-          <div *ngFor="let tag of offer.tags" class="tag">
-            {{ tag }}
+          <div *ngFor="let tag of offer.tags.slice(0,3)" class="tag">
+            {{ tag.stack }}
           </div>
         </div>
       </div>

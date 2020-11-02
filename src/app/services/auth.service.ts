@@ -8,9 +8,10 @@ import { CookieService } from 'ngx-cookie-service';
   providedIn: 'root',
 })
 export class AuthService {
-  private _registerUrl = 'http://localhost:3000/api/register';
-  private _loginUrl = 'http://localhost:3000/api/login';
-  private _formUrl = 'http://localhost:3000/api/post-offer-form';
+  private PORT = 8080;
+  private _registerUrl = `http://localhost:${this.PORT}/api/register`;
+  private _loginUrl = `http://localhost:${this.PORT}/api/login`;
+  private _formUrl = `http://localhost:${this.PORT}/api/post-offer-form`;
 
   constructor(private http: HttpClient, private router: Router, private cookieService: CookieService) {}
 

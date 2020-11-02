@@ -10,7 +10,7 @@ export interface Offer {
   contract: string;
   salary: [number, number]; // [min, max]
   currency: string;
-  tags: Array<string>;
+  tags: [{stack: string, level: number}];
   description: string;
   city: string;
   street: string;
