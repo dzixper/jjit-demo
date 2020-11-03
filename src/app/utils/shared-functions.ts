@@ -28,10 +28,10 @@ export function skillDescription(skill: number): string {
 }
 
 export function salaryStyling(salary: [number, number], currency: string): string {
-  if (salary[0] === undefined || salary[1] === undefined || currency === undefined) {
-    return 'Undisclosed salary';
-  }
-  if (salary[0] === null || salary[1] === null || currency === null) {
+  // if (salary[0] === undefined || salary[1] === undefined || currency === undefined) {
+  //   return 'Undisclosed salary';
+  // }
+  if (!salary[0] || !salary[1] || !currency) {
     return 'Undisclosed salary';
   }
   return (salary[0] + ' - ' + salary[1] + ' ' + currency).replace(
