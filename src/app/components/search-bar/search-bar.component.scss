@@ -120,6 +120,21 @@ $gradient: #f12711, #f5af19, #FC466B, #3F5EFB,
   }
 }
 
+@media only screen and (max-width: 1024px) {
+  .searchbar-search-button {
+    display: none;
+  }
+  .searchbar-filter-button {
+    display: none;
+  }
+  .searchbar-location-button {
+    display: none;
+  }
+  .searchbar-content {
+    justify-content: center;
+  }
+}
+
 .dotbar {
   flex-flow: nowrap;
 }

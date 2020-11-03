@@ -120,3 +120,18 @@
 .offer-card-salary {
   border-radius: 5px 0 0 5px;
 }
+
+@media only screen and (max-width: 1024px) {
+  .body {
+    display: none;
+  }
+  .head {
+    flex-direction: column;
+    align-items: start;
+  }
+  .rightside {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+}
