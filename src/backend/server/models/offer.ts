@@ -6,7 +6,7 @@ const tagSchema = new mongoose.Schema({
 });
 
 const offerSchema = new mongoose.Schema({
-  logo: String, // Base64
+  logo: String,
   company: String,
   website: String,
   companySize: Number,
@@ -15,12 +15,12 @@ const offerSchema = new mongoose.Schema({
   position: String,
   experience: String,
   contract: String,
-  salary: [Number], // [min, max]
+  salary: [Number],
   currency: String,
   description: String,
   city: String,
   street: String,
-  lonLat: [Number], // [lon, lat]
+  lonLat: [Number],
   applyDestination: String,
   mainTech: String,
   timePosted: Date,

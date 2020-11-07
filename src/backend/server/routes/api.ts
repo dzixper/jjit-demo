@@ -56,7 +56,6 @@ router.post('/register', (req: express.Request, res: express.Response) => {
     } else {
       const payload = { subject: registeredUser._id };
       const token = jwt.sign(payload, secretKey);
-      // document.cookie = `token=${token}`
       res.status(200).send({token});
     }
   });
@@ -75,7 +74,6 @@ router.post('/login', (req: express.Request, res: express.Response) => {
       } else {
         const payload = { subject: user._id };
         const token = jwt.sign(payload, secretKey);
-        // document.cookie = `token=${token}`
         res.status(200).send({token});
       }
     }
