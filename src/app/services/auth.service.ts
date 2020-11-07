@@ -8,13 +8,9 @@ import { CookieService } from 'ngx-cookie-service';
   providedIn: 'root',
 })
 export class AuthService {
-  // private PORT = 3000;
   private _registerUrl = `https://yeet-demo.herokuapp.com/api/register`;
-  // private _registerUrl = `http://localhost:${this.PORT}/api/register`;
   private _loginUrl = `https://yeet-demo.herokuapp.com/api/login`;
-  // private _loginUrl = `http://localhost:${this.PORT}/api/login`;
   private _formUrl = `https://yeet-demo.herokuapp.com/api/post-offer-form`;
-  // private _formUrl = `http://localhost:${this.PORT}/api/post-offer-form`;
 
   constructor(private http: HttpClient, private router: Router, private cookieService: CookieService) {}
 
@@ -28,15 +24,13 @@ export class AuthService {
 
   isLoggedIn(): boolean {
     return this.cookieService.check('token');
-    // return !!localStorage.getItem('token');
-    // return document.cookie === 'token';
   }
 
   getToken(): any {
     return this.cookieService.get('token');
   }
 
-  verifyToken(): any { // Observable<HttpResponse<string>>
+  verifyToken(): Observable<any> {
     return this.http.get<any>(this._formUrl);
   }
 

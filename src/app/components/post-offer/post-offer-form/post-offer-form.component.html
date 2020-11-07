@@ -218,8 +218,7 @@ Informujemy, że administratorem danych jest _______ z siedzibą w _______, ul. 
         </div>
       </div>
       <div class="row">
-        <button mat-flat-button color="accent" type="submit" routerLink="verify">Next step</button>
-<!--        [disabled]="!offerForm.valid || !tech || !image || !tags"-->
+        <button mat-flat-button color="accent" type="submit" routerLink="verify" [disabled]="!offerForm.valid || !tech || !image || !tags">Next step</button>
       </div>
     </mat-card>
   </div>

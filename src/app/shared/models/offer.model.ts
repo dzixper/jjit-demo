@@ -1,5 +1,5 @@
 export interface Offer {
-  logo: string; // Base64
+  logo: string;
   company: string;
   website: string;
   companySize: number;
@@ -8,13 +8,13 @@ export interface Offer {
   position: string;
   experience: string;
   contract: string;
-  salary: [number, number]; // [min, max]
+  salary: [number, number];
   currency: string;
   tags: [{stack: string, level: number}];
   description: string;
   city: string;
   street: string;
-  lonLat: [number, number]; // [lon, lat]
+  lonLat: [number, number];
   applyDestination: string;
   mainTech: string;
   timePosted: Date;

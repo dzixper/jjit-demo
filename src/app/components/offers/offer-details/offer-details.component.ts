@@ -45,7 +45,7 @@ export class OfferDetailsComponent implements OnInit {
     return dateStyling(date);
   }
 
-  skillDescription(level: number) {
+  skillDescription(level: number): string {
     return skillDescription(level);
   }
 }

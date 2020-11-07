@@ -22,6 +22,22 @@ export class LoginPageComponent implements OnInit {
     this.isLoginMode = !this.isLoginMode;
   }
 
+  setErrorText(err): void {
+    this.alert.text = err.error;
+    this.alert.color = this.alertErrorColor;
+    this.showAlert();
+  }
+
+  setSuccessText(text): void {
+    this.alert.text = text;
+    this.alert.color = this.alertSuccessColor;
+    this.showAlert();
+  }
+
+  showAlert(): void {
+    this.alert.show = true;
+  }
+
   constructor(
     private router: Router,
     private authService: AuthService,
@@ -37,17 +53,11 @@ export class LoginPageComponent implements OnInit {
   signUp(credentials: { email: string; password: string }): void {
     this.authService.signUp(credentials).subscribe(
       (res) => {
-        // document.cookie = `token=${res.token}`;
-        // localStorage.setItem('token', res.token);
-        this.alert.text = 'Success! Now you can log in';
-        this.alert.color = this.alertSuccessColor;
-        this.alert.show = true;
+        this.setSuccessText('Success! Now you can log in');
         this.cookieService.set('token', res.token);
       },
       (err) => {
-        this.alert.text = err.error;
-        this.alert.color = this.alertErrorColor;
-        this.alert.show = true;
+        this.setErrorText(err);
       }
     );
   }
@@ -55,16 +65,12 @@ export class LoginPageComponent implements OnInit {
   login(credentials: { email: string; password: string }): void {
     this.authService.login(credentials).subscribe(
       (res) => {
-        // localStorage.setItem('token', res.token);
-        // document.cookie = `token=${res.token}`;
-        this.alert.show = false;
+        this.setSuccessText('Success! User logged in');
         this.cookieService.set('token', res.token);
         this.router.navigate(['/']);
       },
       (err) => {
-        this.alert.text = err.error;
-        this.alert.color = this.alertErrorColor;
-        this.alert.show = true;
+        this.setErrorText(err);
       }
     );
   }

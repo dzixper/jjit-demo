@@ -10,7 +10,7 @@ export class AuthGuard implements CanActivate {
   }
 
   async canActivate(): Promise<boolean> {
-    if (this.authService.isLoggedIn()) { // && this.authService.isTokenVerified()
+    if (this.authService.isLoggedIn()) {
       try {
         const result = await this.authService.isTokenVerified();
         return result.valid;

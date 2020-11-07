@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FilterOptionsComponent } from './filter-options/filter-options.component';
 import { TECHNOLOGIES } from '../../shared/technologies';
@@ -14,7 +14,7 @@ import { convertEveryTechnologyToGrayscale } from '../../utils/shared-functions'
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.scss'],
 })
-export class SearchBarComponent implements AfterViewInit {
+export class SearchBarComponent implements OnInit {
   technologies: Array<Technology> = TECHNOLOGIES;
   locations: Array<Location> = LOCATIONS;
 
@@ -24,21 +24,9 @@ export class SearchBarComponent implements AfterViewInit {
 
   openDialog(): void {
     this.dialog.open(FilterOptionsComponent);
-
-    // TODO => to do backendu bedzie przydatne
-    // const dialogRef = this.dialog.open(FilterOptionsComponent);
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log(`Dialog result: ${result}`);
-    // });
   }
 
-  ngAfterViewInit(): void {
-    const mq = window.matchMedia('(max-width: 1600px)');
-
-    if (mq.matches) {
-    } else {
-    }
-  }
+  ngOnInit(): void {}
 
   onTechnologyButtonClick(techName: string, id: number): void {
     this.setQueryParameter(techName);

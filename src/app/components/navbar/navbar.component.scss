@@ -1,3 +1,5 @@
+@import '../../../assets/variables';
+
 * {
   font-size: 14px;
 }
@@ -30,7 +32,7 @@
 
 }
 
-.post-a-job-button {
+.post-a-job-button, .sign-in-button, .hamburger-menu {
   a, button {
     margin-left: 20px;
   }
@@ -62,8 +64,22 @@
   text-align: center;
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: $medium-device-width) {
   .buttons {
+    display: none;
+  }
+
+  .mat-toolbar {
+    justify-content: space-between;
+  }
+}
+
+@media only screen and (max-width: $small-device-width) {
+  .logo {
+    width: 100px;
+    margin: 7px 0 0 0;
+  }
+  .post-a-job-button, .navbar-text {
     display: none;
   }
 }

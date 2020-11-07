@@ -69,7 +69,7 @@ export class PostOfferFormComponent implements OnInit {
   }
 
   checkSalary(salaryLow: number, salaryHigh: number, currency: string): Array<any> {
-    if (salaryHigh === undefined || salaryLow === undefined || currency === undefined) {
+    if (!salaryHigh || !salaryLow || !currency) {
       return [undefined, undefined, undefined];
     } else {
       return [salaryLow, salaryHigh, currency];
@@ -84,9 +84,9 @@ export class PostOfferFormComponent implements OnInit {
     offerBody.mainTech = this.tech;
     offerBody.logo = this.image;
     offerBody.tags = this.tags;
+    offerBody.timePosted = new Date();
     delete offerBody.salarylow;
     delete offerBody.salaryhigh;
-    offerBody.timePosted = new Date();
     return offerBody;
   }
 

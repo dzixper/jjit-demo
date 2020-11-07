@@ -1,6 +1,6 @@
 import { TECHNOLOGIES } from '../shared/technologies';
 
-export function weirdTechLabels(tech: string): string { // TODO XD przepraszam
+export function weirdTechLabels(tech: string): string {
   tech = tech.toLowerCase();
   switch (tech) {
     case '.net': return 'net';
@@ -28,9 +28,6 @@ export function skillDescription(skill: number): string {
 }
 
 export function salaryStyling(salary: [number, number], currency: string): string {
-  // if (salary[0] === undefined || salary[1] === undefined || currency === undefined) {
-  //   return 'Undisclosed salary';
-  // }
   if (!salary[0] || !salary[1] || !currency) {
     return 'Undisclosed salary';
   }

@@ -1,3 +1,5 @@
+@import '../../../assets/variables';
+
 .container {
   display: flex;
   flex-direction: column;
@@ -69,7 +71,7 @@
 
 .column > * {
   width: 100%;
-  overflow-y: scroll;
+  height: 100%;
 }
 
 :host {
@@ -77,7 +79,7 @@
   overflow: auto;
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: $medium-device-width) {
   .map-section {
     display: none;
   }

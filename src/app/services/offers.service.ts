@@ -8,11 +8,8 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class OffersService {
-  // private PORT = 3000;
   private _offersUrl = `https://yeet-demo.herokuapp.com/api/offers`;
-  // private _offersUrl = `http://localhost:${this.PORT}/api/offers`;
   private _postFormUrl = `https://yeet-demo.herokuapp.com/api/post-offer-form`;
-  // private _postFormUrl = `http://localhost:${this.PORT}/api/post-offer-form`;
   private passedOffer: Offer;
   isOfferLoaded = false;
   parsedOffers: Array<Offer>;

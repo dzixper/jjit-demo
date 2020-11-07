@@ -1,9 +1,4 @@
-$gradient: #f12711, #f5af19, #FC466B, #3F5EFB,
-#c471ed, #f64f59, #6dd5ed, #0f9b0f,
-#FDC830, #F37335, #302b63, #ED213A,
-#264653, #85144b , #4ca2cd, #24243e,
-#c31432, #cc5333, #0049B7, #6B5B95,
-#00b09b, #96c93d, #fca311;
+@import '../../../assets/variables';
 
 :host {
   background: white;
@@ -15,7 +10,6 @@ $gradient: #f12711, #f5af19, #FC466B, #3F5EFB,
   flex-wrap: nowrap;
   height: 59px;
   padding: 14px 15px 10px;
-  //box-sizing: border-box;
 }
 
 .searchbar-content > * {
@@ -51,30 +45,6 @@ $gradient: #f12711, #f5af19, #FC466B, #3F5EFB,
   font-weight: 300;
   display: flex;
   flex-flow: column wrap;
-  margin: 0 6px;
-  align-content: center;
-  align-items: center;
-  justify-content: space-between;
-  text-align: center;
-  color: #757575;
-  @for $i from 0 through 22 {
-    #button#{$i} {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(to right, nth($gradient, $i+1), lighten(nth($gradient, $i+1), 10%));
-      &:hover {
-        box-shadow: rgb(228, 232, 240) 0 0 0 5px;
-      }
-    }
-  }
-
-
-}
-
-.icons {
-  //height: 18px;
-  //width: 18px;
 }
 
 .header {
@@ -108,35 +78,28 @@ $gradient: #f12711, #f5af19, #FC466B, #3F5EFB,
   }
 }
 
-@media only screen and (min-width: 1670px) {
+.dotbar {
+  flex-flow: nowrap;
+}
+
+@media only screen and (min-width: $large-device-width) {
   .more-technologies {
     display: none;
   }
 }
 
-@media only screen and (max-width: 1670px) {
+@media only screen and (max-width: $large-device-width) {
   .techbar {
     display: none;
   }
 }
 
-@media only screen and (max-width: 1024px) {
-  .searchbar-search-button {
-    display: none;
-  }
-  .searchbar-filter-button {
-    display: none;
-  }
-  .searchbar-location-button {
+@media only screen and (max-width: $medium-device-width) {
+  .searchbar-search-button, .searchbar-filter-button, .searchbar-location-button {
     display: none;
   }
   .searchbar-content {
     justify-content: center;
   }
 }
-
-.dotbar {
-  flex-flow: nowrap;
-}
-
 
