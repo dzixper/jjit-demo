@@ -35,7 +35,7 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnInit {
   ) {}
 
   ngOnInit(): void {
-    setTimeout(() => this.createMap());
+    setTimeout(() => this.createMap(), 0);
   }
 
   ngAfterViewInit(): void {
