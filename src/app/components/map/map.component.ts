@@ -2,7 +2,7 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
-  OnDestroy,
+  OnDestroy, OnInit,
   ViewChild,
 } from '@angular/core';
 import { OffersService } from '../../services/offers.service';
@@ -18,7 +18,7 @@ declare const mapboxgl: any;
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss'],
 })
-export class MapComponent implements AfterViewInit, OnDestroy {
+export class MapComponent implements AfterViewInit, OnDestroy, OnInit {
   @ViewChild('map') mapElement: ElementRef;
   map: any;
   mapToken =
@@ -34,8 +34,12 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     private route: ActivatedRoute
   ) {}
 
+  ngOnInit(): void {
+    setTimeout(() => this.createMap());
+  }
+
   ngAfterViewInit(): void {
-    this.createMap();
+    // this.createMap();
     this.subscriptionHandler = this.router.events.subscribe(() => {
       if (this.route.snapshot.queryParams.company !== undefined) {
         const offer = this.offersService.getPassOffer();
