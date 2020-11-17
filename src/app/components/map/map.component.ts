@@ -39,7 +39,6 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnInit {
   }
 
   ngAfterViewInit(): void {
-    // this.createMap();
     this.subscriptionHandler = this.router.events.subscribe(() => {
       if (this.route.snapshot.queryParams.company !== undefined) {
         const offer = this.offersService.getPassOffer();
@@ -109,7 +108,7 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnInit {
 
   createMap(): Promise<any> {
     mapboxgl.accessToken = this.mapToken;
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       this.map = new mapboxgl.Map({
         container: 'map',
         style:
